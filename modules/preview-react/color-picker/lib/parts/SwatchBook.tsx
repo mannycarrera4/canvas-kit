@@ -1,83 +1,52 @@
-import * as React from 'react';
 import styled from '@emotion/styled';
-import {borderRadius, colors, space} from '@workday/canvas-kit-react/tokens';
-import {focusRing, mouseFocusBehavior} from '@workday/canvas-kit-react/common';
-import {ColorSwatch} from '@workday/canvas-kit-react/color-picker';
+import {createComponent, StyledType} from '@workday/canvas-kit-react-common';
+import {spacing} from '@workday/canvas-kit-react-core';
+import * as React from 'react';
 
-export interface SwatchBookProps {
+import SwatchButton, {SwatchButtonProps} from './SwatchButton';
+
+export interface SwatchBookProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
   colors: string[];
-  value?: string;
-  onSelect: (color: string) => void;
+  columnCount?: number;
+  children: (colors: string[]) => React.ReactNode[];
 }
 
-interface SwatchContainerProps {
-  isSelected: boolean;
+/* eslint-disable */
+function chunkColors(colors: React.ReactNode[], columnCount: number = 8) {
+  const temp: React.ReactNode[][] = [];
+  for (let i = 0; i < colors.length; i += columnCount) {
+    temp.push(colors.slice(i, i + columnCount));
+  }
+  return temp;
 }
 
-const accessibilityBorder = `${colors.frenchVanilla100} 0px 0px 0px 2px, ${colors.licorice200} 0px 0px 0px 3px`;
-
-const SwatchContainer = styled('div')<SwatchContainerProps>(
-  {
-    display: 'flex',
-    width: 20,
-    height: 20,
-    cursor: 'pointer',
-    borderRadius: borderRadius.s,
-    transition: 'box-shadow 120ms ease',
-    margin: `0px ${space.xxs} ${space.xxs} 0px`,
-
-    '&:hover': {
-      boxShadow: accessibilityBorder,
-    },
-
-    '&:focus': {
-      outline: 'none',
-      ...focusRing({separation: 2}),
-    },
-  },
-  ({isSelected}) => ({
-    boxShadow: isSelected ? accessibilityBorder : undefined,
-    ...mouseFocusBehavior({
-      '&:focus': {
-        animation: 'none',
-        boxShadow: 'none',
-      },
-      '&:hover': {
-        boxShadow: accessibilityBorder,
-      },
-      '&': {
-        boxShadow: isSelected ? accessibilityBorder : undefined,
-      },
-    }),
-  })
-);
-
-const Container = styled('div')({
+const StyledSwatchBookContainer = styled('div')<StyledType>({
   display: 'flex',
   flexWrap: 'wrap',
-  margin: `0px -${space.xxs} -${space.xxs} 0px`,
+  margin: `0px -${spacing.xxs} -${spacing.xxs} 0px`,
+  flexDirection: 'column',
 });
 
-export const SwatchBook = ({colors, value, onSelect}: SwatchBookProps) => (
-  <Container>
-    {colors.map((color, index) => {
-      const isSelected = value ? color.toLowerCase() === value.toLowerCase() : false;
-
-      const handleClick = () => onSelect(color);
-      const handleKeyDown = (event: React.KeyboardEvent) =>
-        (event.key === 'Enter' || event.key === ' ') && onSelect(color);
-
-      return (
-        <SwatchContainer
-          key={index + '-' + color}
-          onClick={handleClick}
-          onKeyDown={handleKeyDown}
-          tabIndex={0}
-          isSelected={isSelected}
-        >
-          <ColorSwatch color={color} showCheck={isSelected} />
-        </SwatchContainer>
-      );
-    })}
-  </Container>
-);
+export default createComponent('div')({
+  displayName: 'SwatchBook',
+  Component: ({colors, children, columnCount = 8, ...elemProps}: SwatchBookProps, ref, Element) => {
+    return (
+      <StyledSwatchBookContainer ref={ref} as={Element} {...elemProps}>
+        {chunkColors(children(colors), columnCount).map((row, index) => {
+          return (
+            <div key={index} style={{display: 'flex', flexDirection: 'row'}}>
+              {row
+                .filter(
+                  (child): child is React.ReactElement<SwatchButtonProps> =>
+                    React.isValidElement(child) && child.type === SwatchButton
+                )
+                .map((child, i: number) => {
+                  return <SwatchButton key={i} {...child.props} />;
+                })}
+            </div>
+          );
+        })}
+      </StyledSwatchBookContainer>
+    );
+  },
+});
