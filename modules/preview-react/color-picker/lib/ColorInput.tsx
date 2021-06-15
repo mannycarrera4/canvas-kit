@@ -7,12 +7,13 @@ import {
   styled,
   ContentDirection,
   createComponent,
+  StyledType,
 } from '@workday/canvas-kit-react/common';
-import {colors, spacing, type, inputColors} from '@workday/canvas-kit-react/tokens';
+import {colors, space, type, inputColors} from '@workday/canvas-kit-react/tokens';
 import TextInput, {TextInputProps} from '@workday/canvas-kit-react/text-input';
 import * as React from 'react';
 
-import ColorPicker, {ColorPickerContext} from '../ColorPicker';
+import {ColorPicker, ColorPickerContext} from './ColorPicker';
 
 export interface ColorInputProps extends TextInputProps, GrowthBehavior {
   /**
@@ -35,6 +36,11 @@ export interface ColorInputProps extends TextInputProps, GrowthBehavior {
    */
   error?: ErrorType;
   /**
+   * If true, set the ColorInput to the disabled state.
+   * @default false
+   */
+  disabled?: boolean;
+  /**
    * The function called when the ColorInput state changes.
    */
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -46,12 +52,12 @@ export interface ColorInputProps extends TextInputProps, GrowthBehavior {
 
 const colorInputWidth = 116;
 
-const CustomHexInput = styled(TextInput)<Pick<ColorInputProps, 'disabled' | 'grow'>>(
+const CustomHexInput = styled(TextInput)<Pick<ColorInputProps, 'disabled' | 'grow'> & StyledType>(
   {
     boxSizing: 'border-box',
     minWidth: colorInputWidth,
     width: colorInputWidth,
-    ...type.variant.mono,
+    fontFamily: type.properties.fontFamilies.monospace,
     '&:focus::placeholder': {
       color: 'transparent',
     },
@@ -88,8 +94,8 @@ const PoundSignPrefix = styled('span')<Pick<ColorInputProps, 'disabled'>>(
   {
     position: 'absolute',
     top: 10,
-    ...type.body,
-    ...type.variant.mono,
+    ...type.levels.subtext.large,
+    fontFamily: type.properties.fontFamilies.monospace,
   },
   ({disabled}) => ({
     color: disabled ? inputColors.disabled.text : undefined,
@@ -107,7 +113,7 @@ const PoundSignPrefix = styled('span')<Pick<ColorInputProps, 'disabled'>>(
 const swatchTileStyles = css({
   position: 'absolute',
   top: 0,
-  left: spacing.xxs,
+  left: space.xxs,
   marginTop: '10px', // Fix vertical alignment on IE11
   boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.25)',
   pointerEvents: 'none',
@@ -115,18 +121,20 @@ const swatchTileStyles = css({
 
 export default createComponent()({
   displayName: 'ColorInput',
-  Component: ({
-    placeholder = 'FFFFFF',
-    value = '',
-    showCheck,
-    onChange,
-    onValidColorChange,
-    inputRef,
-    disabled,
-    error,
-    grow,
-    ...elemProps
-  }: ColorInputProps) => {
+  Component: (
+    {
+      placeholder = 'FFFFFF',
+      value = '',
+      showCheck,
+      onChange,
+      onValidColorChange,
+      disabled,
+      error,
+      grow,
+      ...elemProps
+    }: ColorInputProps,
+    ref
+  ) => {
     const {state, events} = React.useContext(ColorPickerContext);
 
     const formatValue = (value: string) => {
@@ -156,7 +164,7 @@ export default createComponent()({
       <StyledInputContainer grow={grow}>
         <CustomHexInput
           dir="ltr"
-          inputRef={inputRef}
+          ref={ref}
           onChange={handleChange}
           type="text"
           placeholder={value ? undefined : placeholder}

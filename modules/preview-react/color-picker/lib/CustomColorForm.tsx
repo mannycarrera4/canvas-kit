@@ -3,7 +3,7 @@ import {createComponent, StyledType} from '@workday/canvas-kit-react/common';
 import {FormField, FormFieldProps} from '@workday/canvas-kit-react/form-field';
 import * as React from 'react';
 
-import {ColorPickerContext} from '../ColorPicker';
+import {ColorPickerContext} from './ColorPicker';
 
 export interface CustomColorFormProps {
   children: React.ReactNode;

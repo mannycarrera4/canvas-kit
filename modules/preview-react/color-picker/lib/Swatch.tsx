@@ -7,7 +7,7 @@ import {checkSmallIcon} from '@workday/canvas-system-icons-web';
 import chroma from 'chroma-js';
 import * as React from 'react';
 
-import {ColorPickerContext} from '../';
+import {ColorPickerContext} from './ColorPicker';
 
 export interface ColorSwatchProps {
   /**

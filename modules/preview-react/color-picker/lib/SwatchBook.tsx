@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import {createComponent, StyledType} from '@workday/canvas-kit-react-common';
-import {spacing} from '@workday/canvas-kit-react-core';
+import {createComponent, StyledType} from '@workday/canvas-kit-react/common';
+import {space} from '@workday/canvas-kit-react/tokens';
 import * as React from 'react';
 
 import SwatchButton, {SwatchButtonProps} from './SwatchButton';
@@ -23,7 +23,7 @@ function chunkColors(colors: React.ReactNode[], columnCount: number = 8) {
 const StyledSwatchBookContainer = styled('div')<StyledType>({
   display: 'flex',
   flexWrap: 'wrap',
-  margin: `0px -${spacing.xxs} -${spacing.xxs} 0px`,
+  margin: `0px -${space.xxs} -${space.xxs} 0px`,
   flexDirection: 'column',
 });
 

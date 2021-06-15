@@ -1,13 +1,13 @@
-import {createComponent} from '@workday/canvas-kit-react/common';
 import * as React from 'react';
+import {createComponent} from '@workday/canvas-kit-react/common';
 
-import ColorInput from './parts/ColorInput';
-import CustomColorForm from './parts/CustomColorForm';
-import SubmitButton from './parts/SubmitButton';
-import Swatch from './parts/Swatch';
+import ColorInput from './ColorInput';
+import CustomColorForm from './CustomColorForm';
+import SubmitButton from './SubmitButton';
+import Swatch from './Swatch';
 import SwatchBook from './SwatchBook';
-import SwatchButton from './parts/SwatchButton';
-import SwatchRow from './parts/SwatchRow';
+import SwatchButton from './SwatchButton';
+import SwatchRow from './SwatchRow';
 import {ColorPickerModel, ColorPickerModelConfig, useColorPickerModel} from './useColorPickerModel';
 
 export interface ColorPickerProps extends ColorPickerModelConfig {
@@ -19,20 +19,21 @@ export const ColorPickerContext = React.createContext({} as ColorPickerModel);
 
 export const useColorPickerModelContext = () => React.useContext(ColorPickerContext);
 
-export default createComponent()({
+export const ColorPicker = createComponent()({
   displayName: 'ColorPicker',
   Component: ({children, model, ...config}: ColorPickerProps) => {
+    // useDefaultModel
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const value = model || useColorPickerModel(config);
     return <ColorPickerContext.Provider value={value}>{children}</ColorPickerContext.Provider>;
   },
   subComponents: {
-    ColorInput,
-    SubmitButton,
-    CustomColorForm,
-    SwatchBook,
-    Swatch,
-    SwatchButton,
-    SwatchRow,
+    Input: ColorInput,
+    SubmitButton: SubmitButton,
+    Form: CustomColorForm,
+    SwatchBook: SwatchBook,
+    Swatch: Swatch,
+    SwatchButton: SwatchButton,
+    SwatchRow: SwatchRow,
   },
 });

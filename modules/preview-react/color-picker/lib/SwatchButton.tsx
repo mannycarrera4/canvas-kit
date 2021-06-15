@@ -7,13 +7,13 @@ import {
   pickForegroundColor,
   StyledType,
 } from '@workday/canvas-kit-react/common';
-import {borderRadius, colors, spacing} from '@workday/canvas-kit-react/tokens';
+import {borderRadius, colors, space} from '@workday/canvas-kit-react/tokens';
 import {SystemIcon} from '@workday/canvas-kit-react/icon';
 import {checkSmallIcon} from '@workday/canvas-system-icons-web';
 import chroma from 'chroma-js';
 import * as React from 'react';
 
-import {ColorPickerContext} from '../';
+import {ColorPickerContext} from './ColorPicker';
 
 export interface SwatchButtonProps {
   /**
@@ -49,7 +49,7 @@ const SwatchButtonContainer = styled('button')<
     cursor: 'pointer',
     borderRadius: borderRadius.s,
     transition: 'box-shadow 120ms ease',
-    margin: `0px ${spacing.xxs} ${spacing.xxs} 0px`,
+    margin: `0px ${space.xxs} ${space.xxs} 0px`,
     border: 'none',
     display: 'flex',
     alignItems: 'center',
