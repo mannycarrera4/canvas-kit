@@ -1,5 +1,8 @@
 import {useState} from '@storybook/addons';
 import {colors} from '@workday/canvas-kit-react-core';
+import {Popup, usePopupModel, useCloseOnOutsideClick} from '@workday/canvas-kit-react/popup';
+import {IconButton} from '@workday/canvas-kit-react/button';
+import {bgColorIcon} from '@workday/canvas-system-icons-web';
 import React from 'react';
 
 import {ColorPicker} from '../lib/ColorPicker';
@@ -87,20 +90,9 @@ const defaultColorSet = [
 ];
 
 export const Default = () => {
-  /**
-   * You can import useColorPickerModel to access internal state
-   * Example: model.state.color
-   *
-   * Behavior by default is defined, no extra config is required
-   */
   const model = useColorPickerModel();
   return (
     <div>
-      <p>By default, the behavior is defined by the model .</p>
-      <p>
-        You can import <strong>useColorPickerModel</strong> to access internal state like this:{' '}
-        <span style={{color: colors.blueberry400}}>model.state.color</span>
-      </p>
       <ColorPicker model={model}>
         <ColorPicker.SwatchBook
           columnCount={8}
@@ -113,14 +105,65 @@ export const Default = () => {
         </ColorPicker.SwatchBook>
       </ColorPicker>
       <div>
-        Accessing internal state to view the current color:{' '}
+        <h3>Current Color</h3>
         <div style={{display: 'flex', alignItems: 'center'}}>
-          {/* <ColorPicker>
+          <ColorPicker>
             <ColorPicker.Swatch showCheck={false} color={model.state.color} />
           </ColorPicker>
-          {model.state.color} */}
+          {model.state.color}
         </div>
       </div>
+    </div>
+  );
+};
+
+export const WithPopup = () => {
+  const model = usePopupModel();
+  const colorPickerModel = useColorPickerModel();
+  useCloseOnOutsideClick(model);
+
+  const handleSwatchClick = event => {
+    colorPickerModel.events.setColor({color: event.target.getAttribute('color')});
+    // colorPickerModel.events.setColor(data.color);
+    model.events.hide();
+  };
+  return (
+    <div>
+      <Popup model={model}>
+        <Popup.Target
+          icon={bgColorIcon}
+          aria-label="choose background color"
+          variant="squareFilled"
+          as={IconButton}
+        ></Popup.Target>
+        <Popup.Popper placement="bottom">
+          <Popup.Card padding="s">
+            <Popup.Body>
+              <ColorPicker model={colorPickerModel}>
+                <ColorPicker.SwatchBook
+                  columnCount={8}
+                  style={{marginBottom: '20px'}}
+                  colors={defaultColorSet}
+                >
+                  {colors => {
+                    return colors.map(color => (
+                      <ColorPicker.SwatchButton
+                        key={color}
+                        color={color}
+                        onClick={handleSwatchClick}
+                      />
+                    ));
+                  }}
+                </ColorPicker.SwatchBook>
+              </ColorPicker>
+            </Popup.Body>
+          </Popup.Card>
+        </Popup.Popper>
+      </Popup>
+      <ColorPicker>
+        <ColorPicker.Swatch showCheck={false} color={colorPickerModel.state.color} />
+      </ColorPicker>
+      {colorPickerModel.state.color}
     </div>
   );
 };
