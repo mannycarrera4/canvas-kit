@@ -2,10 +2,10 @@
 
 <img src="https://img.shields.io/badge/LABS-alpha-orange" alt="LABS: Alpha" />
 
-This is a group of work-in-progress components. Canvas Kit Labs is an incubator for new and
-experimental components. Since we have a rather rigorous process for getting components in at a
-production level, it can be valuable to make them available earlier while we continuously iterate on
-the API, functionality and accessibility. The Labs components allow us to do that as needed.
+These are work-in-progress components. Canvas Kit Labs is an incubator for new and experimental
+components. Since we have a rather rigorous process for getting components in at a production level,
+it can be valuable to make them available earlier while we continuously iterate on the API,
+functionality and accessibility. The Labs components allow us to do that as needed.
 
 Note: components in Labs do not require a full design or accessibility review. Use them at your own
 risk.
