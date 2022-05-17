@@ -145,4 +145,26 @@ describe('recategorizeIconButtons', () => {
 
     expectTransform(input, expected);
   });
+
+  it('should just remove IconButton import and maintain existing import', () => {
+    const input = stripIndent`
+      import {IconButton, Skeleton, TertiaryButton} from '@workday/canvas-kit-react';
+
+      <>
+        <IconButton variant="circle" icon={plusIcon} />
+        <TertiaryButton>Hello World</TertiaryButton>
+      </>
+    `;
+
+    const expected = stripIndent`
+      import { Skeleton, TertiaryButton } from '@workday/canvas-kit-react';
+
+      <>
+        <TertiaryButton icon={plusIcon} />
+        <TertiaryButton>Hello World</TertiaryButton>
+      </>
+    `;
+
+    expectTransform(input, expected);
+  });
 });
