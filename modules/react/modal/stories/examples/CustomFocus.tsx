@@ -31,12 +31,12 @@ export const CustomFocus = () => {
               <TextInput ref={ref} value={value} onChange={e => setValue(e.currentTarget.value)} />
             </FormField>
           </Modal.Body>
-          <HStack spacing="s" padding="xxs" marginTop="xxs">
+          <Modal.Footer>
             <Modal.CloseButton as={PrimaryButton} onClick={handleAcknowledge}>
               Acknowledge
             </Modal.CloseButton>
             <Modal.CloseButton>Cancel</Modal.CloseButton>
-          </HStack>
+          </Modal.Footer>
         </Modal.Card>
       </Modal.Overlay>
     </Modal>

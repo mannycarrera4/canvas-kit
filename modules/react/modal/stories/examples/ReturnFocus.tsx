@@ -43,12 +43,12 @@ export const ReturnFocus = () => {
               Are you sure you want to delete the item?
             </Box>
           </Modal.Body>
-          <HStack spacing="s" padding="xxs" marginTop="xxs">
+          <Modal.Footer>
             <Modal.CloseButton as={DeleteButton} onClick={handleDelete}>
               Delete
             </Modal.CloseButton>
             <Modal.CloseButton>Cancel</Modal.CloseButton>
-          </HStack>
+          </Modal.Footer>
         </Modal.Card>
       </Modal.Overlay>
     </Modal>

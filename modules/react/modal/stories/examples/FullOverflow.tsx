@@ -81,12 +81,12 @@ export const FullOverflow = () => {
               ut aliquam purus sit.
             </p>
           </Modal.Body>
-          <HStack spacing="s" padding="xxs" marginTop="xxs">
+          <Modal.Footer>
             <Modal.CloseButton as={PrimaryButton} onClick={handleAcknowledge}>
               Acknowledge
             </Modal.CloseButton>
             <Modal.CloseButton onClick={handleCancel}>Cancel</Modal.CloseButton>
-          </HStack>
+          </Modal.Footer>
         </Modal.Card>
       </Modal.OverflowOverlay>
     </Modal>

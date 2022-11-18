@@ -26,12 +26,12 @@ export const Basic = () => {
               software and associated documentation files (the "Software").
             </Box>
           </Modal.Body>
-          <HStack spacing="s" padding="xxs" marginTop="xxs">
+          <Modal.Footer>
             <Modal.CloseButton as={PrimaryButton} onClick={handleAcknowledge}>
               Acknowledge
             </Modal.CloseButton>
             <Modal.CloseButton onClick={handleCancel}>Cancel</Modal.CloseButton>
-          </HStack>
+          </Modal.Footer>
         </Modal.Card>
       </Modal.Overlay>
     </Modal>

@@ -39,10 +39,10 @@ export const FormModal = () => {
               <TextInput name="last" />
             </FormField>
           </Modal.Body>
-          <HStack spacing="s" padding="xxs" marginTop="xxs">
+          <Modal.Footer>
             <Modal.CloseButton>Cancel</Modal.CloseButton>
             <PrimaryButton type="submit">Submit</PrimaryButton>
-          </HStack>
+          </Modal.Footer>
         </Modal.Card>
       </Modal.Overlay>
     </Modal>
