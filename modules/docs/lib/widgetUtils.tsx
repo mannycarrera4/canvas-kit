@@ -371,7 +371,7 @@ export const SymbolDoc = ({
 }: SymbolDocProps) => {
   const doc = useDoc({name, fileName});
   const symbolDocBreadcrumb = React.useContext(SymbolDocBreadcrumbsContext);
-
+  const [noteText, setNoteText] = React.useState('');
   const children = getSymbolDocChildren(doc, meta, name);
 
   const requiresCodeWrapper = [
@@ -405,10 +405,13 @@ export const SymbolDoc = ({
     children
   );
 
-  // console.warn(doc?.description);
-
+  // console.warn(doc?.descrip  tion);
+  let a;
   if (doc?.description.includes('Note')) {
-    console.warn(doc.description.split('**Note**:'));
+    const Y = 'Note';
+    var Z = doc?.description.slice(doc?.description.indexOf('Note') + Y.length);
+    a = Z;
+    console.warn(Z);
   }
 
   const trimmedDescription = doc?.description.includes('Note')
@@ -419,11 +422,10 @@ export const SymbolDoc = ({
     <StyledSymbolDoc {...elemProps}>
       <HeadingLevelContext.Provider value={headingStart}>
         {!hideHeading && <Heading>{name}</Heading>}
-
         {!hideDescription && doc && (
-          <MdxJSToJSX>{descriptionOverride || trimmedDescription}</MdxJSToJSX>
+          <MdxJSToJSX>{descriptionOverride || doc.description}</MdxJSToJSX>
         )}
-        {doc?.description.includes('**Note**:') && (
+        {doc?.description.includes('Note') && (
           <Card
             depth="none"
             borderRadius="m"
@@ -444,8 +446,9 @@ export const SymbolDoc = ({
             </Flex>
             <Card.Body>
               <Text lineHeight="24px">
-                {doc.description}
-                {/* {doc.description
+                {a}
+                {/* {doc.description}
+                {doc.description
                   .split('**Note**:')[1]
                   .split(' ')
                   .map(word => {
