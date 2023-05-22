@@ -11,6 +11,12 @@ import {Hyperlink} from '@workday/canvas-kit-react/button';
 import {docs} from './docs';
 import {Value} from './Value';
 import * as types from '../docgen/docTypes';
+import {Card} from '@workday/canvas-kit-react/card';
+import {Flex} from '@workday/canvas-kit-react/layout';
+import {StatusIndicator} from '@workday/canvas-kit-preview-react/status-indicator';
+import {Text} from '@workday/canvas-kit-react/text';
+import {SystemIcon} from '@workday/canvas-kit-react/icon';
+import {exclamationCircleIcon} from '@workday/canvas-system-icons-web';
 
 /**
  * This context allows us to keep track if we're within a nested stack of dialog
@@ -399,12 +405,61 @@ export const SymbolDoc = ({
     children
   );
 
+  // console.warn(doc?.description);
+
+  if (doc?.description.includes('Note')) {
+    console.warn(doc.description.split('**Note**:'));
+  }
+
+  const trimmedDescription = doc?.description.includes('Note')
+    ? doc.description.split('**Note**:')[0]
+    : doc?.description;
+
   const symbolDocContents = (
     <StyledSymbolDoc {...elemProps}>
       <HeadingLevelContext.Provider value={headingStart}>
         {!hideHeading && <Heading>{name}</Heading>}
+
         {!hideDescription && doc && (
-          <MdxJSToJSX>{descriptionOverride || doc.description}</MdxJSToJSX>
+          <MdxJSToJSX>{descriptionOverride || trimmedDescription}</MdxJSToJSX>
+        )}
+        {doc?.description.includes('**Note**:') && (
+          <Card
+            depth="none"
+            borderRadius="m"
+            backgroundColor="cantaloupe100"
+            padding="s"
+            borderColor="toastedMarshmallow200"
+            marginY="m"
+          >
+            <Flex gap="xs">
+              <SystemIcon
+                icon={exclamationCircleIcon}
+                color="toastedMarshmallow600"
+                colorHover="toastedMarshmallow600"
+              />
+              <Card.Heading color="toastedMarshmallow600" marginBottom="xs">
+                Note
+              </Card.Heading>
+            </Flex>
+            <Card.Body>
+              <Text lineHeight="24px">
+                {doc.description}
+                {/* {doc.description
+                  .split('**Note**:')[1]
+                  .split(' ')
+                  .map(word => {
+                    // const {}
+                    console.warn(word);
+                    if (word.includes('`')) {
+                      const trimmedWord = word.replace(/[`]/g, '');
+                      return <StatusIndicator>{trimmedWord}</StatusIndicator>;
+                    }
+                    return word + ' ';
+                  })} */}
+              </Text>
+            </Card.Body>
+          </Card>
         )}
         {contents}
       </HeadingLevelContext.Provider>
