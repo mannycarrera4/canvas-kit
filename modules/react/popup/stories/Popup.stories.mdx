@@ -1,4 +1,4 @@
-import {SymbolDoc, Specifications} from '@workday/canvas-kit-docs';
+import {SymbolDoc, Specifications, NoteCard} from '@workday/canvas-kit-docs';
 
 import {Popup} from '@workday/canvas-kit-react/popup';
 
@@ -86,6 +86,8 @@ focus to the next appropriate element.
 > appears out of order to Safari + VoiceOver users. We render popups at the bottom of the
 > document.body to ensure proper rendering. You could use `portal=false` on the `Popper` component,
 > but that would risk incorrect rendering in all browsers.
+
+<NoteCard message={"Safari does not support `aria-owns`. This means that the contents of the Popup will appears out of order to Safari + VoiceOver users. We render popups at the bottom of the document.body to ensure proper rendering. You could use `portal=false` on the `Popper` component, but that would risk incorrect rendering in all browsers."} />
 
 <ExampleCodeBlock code={FocusRedirect} />
 

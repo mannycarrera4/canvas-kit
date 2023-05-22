@@ -17,6 +17,7 @@ import {StatusIndicator} from '@workday/canvas-kit-preview-react/status-indicato
 import {Text} from '@workday/canvas-kit-react/text';
 import {SystemIcon} from '@workday/canvas-kit-react/icon';
 import {exclamationCircleIcon} from '@workday/canvas-system-icons-web';
+import {NoteCard} from './NoteCard';
 
 /**
  * This context allows us to keep track if we're within a nested stack of dialog
@@ -426,43 +427,44 @@ export const SymbolDoc = ({
           <MdxJSToJSX>{descriptionOverride || doc.description}</MdxJSToJSX>
         )}
         {doc?.description.includes('Note') && (
-          <Card
-            depth="none"
-            borderRadius="m"
-            backgroundColor="cantaloupe100"
-            padding="s"
-            borderColor="toastedMarshmallow200"
-            marginY="m"
-          >
-            <Flex gap="xs">
-              <SystemIcon
-                icon={exclamationCircleIcon}
-                color="toastedMarshmallow600"
-                colorHover="toastedMarshmallow600"
-              />
-              <Card.Heading color="toastedMarshmallow600" marginBottom="xs">
-                Note
-              </Card.Heading>
-            </Flex>
-            <Card.Body>
-              <Text lineHeight="24px">
-                {a}
-                {/* {doc.description}
-                {doc.description
-                  .split('**Note**:')[1]
-                  .split(' ')
-                  .map(word => {
-                    // const {}
-                    console.warn(word);
-                    if (word.includes('`')) {
-                      const trimmedWord = word.replace(/[`]/g, '');
-                      return <StatusIndicator>{trimmedWord}</StatusIndicator>;
-                    }
-                    return word + ' ';
-                  })} */}
-              </Text>
-            </Card.Body>
-          </Card>
+          <NoteCard message={a} />
+          // <Card
+          //   depth="none"
+          //   borderRadius="m"
+          //   backgroundColor="cantaloupe100"
+          //   padding="s"
+          //   borderColor="toastedMarshmallow200"
+          //   marginY="m"
+          // >
+          //   <Flex gap="xs">
+          //     <SystemIcon
+          //       icon={exclamationCircleIcon}
+          //       color="toastedMarshmallow600"
+          //       colorHover="toastedMarshmallow600"
+          //     />
+          //     <Card.Heading color="toastedMarshmallow600" marginBottom="xs">
+          //       Note
+          //     </Card.Heading>
+          //   </Flex>
+          //   <Card.Body>
+          //     <Text lineHeight="24px">
+          //       {a}
+          //       {/* {doc.description}
+          //       {doc.description
+          //         .split('**Note**:')[1]
+          //         .split(' ')
+          //         .map(word => {
+          //           // const {}
+          //           console.warn(word);
+          //           if (word.includes('`')) {
+          //             const trimmedWord = word.replace(/[`]/g, '');
+          //             return <StatusIndicator>{trimmedWord}</StatusIndicator>;
+          //           }
+          //           return word + ' ';
+          //         })} */}
+          //     </Text>
+          //   </Card.Body>
+          // </Card>
         )}
         {contents}
       </HeadingLevelContext.Provider>
