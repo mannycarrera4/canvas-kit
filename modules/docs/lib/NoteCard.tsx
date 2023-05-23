@@ -1,12 +1,12 @@
 import React from 'react';
 
-import {createComponent, styled, StyledType} from '@workday/canvas-kit-react/common';
-import {BoxProps, Flex, FlexProps} from '@workday/canvas-kit-react/layout';
-import {borderRadius, colors, space} from '@workday/canvas-kit-react/tokens';
+import {createComponent} from '@workday/canvas-kit-react/common';
+import {BoxProps, Flex} from '@workday/canvas-kit-react/layout';
 import {Text} from '@workday/canvas-kit-react/text';
 import {Card} from '@workday/canvas-kit-react/card';
 import {SystemIcon} from '@workday/canvas-kit-react/icon';
 import {exclamationCircleIcon} from '@workday/canvas-system-icons-web';
+import {StatusIndicator} from '@workday/canvas-kit-preview-react/status-indicator';
 
 export interface NoteCardProps extends BoxProps {
   message?: string | undefined;
@@ -15,6 +15,8 @@ export interface NoteCardProps extends BoxProps {
 export const NoteCard = createComponent('div')({
   displayName: 'NoteCard',
   Component: ({children, message, ...elemProps}: NoteCardProps, ref, Element) => {
+    const splitMessage = message?.split(' ');
+
     return (
       <Card
         depth="none"
@@ -35,7 +37,19 @@ export const NoteCard = createComponent('div')({
           </Card.Heading>
         </Flex>
         <Card.Body>
-          <Text lineHeight="24px">{message}</Text>
+          <Text lineHeight="24px">
+            {splitMessage?.map(word => {
+              if (word.includes('`')) {
+                const trimmedWord = word.replace(/[`]/g, '');
+                return (
+                  <>
+                    <StatusIndicator emphasis="high">{trimmedWord}</StatusIndicator>{' '}
+                  </>
+                );
+              }
+              return word + ' ';
+            })}
+          </Text>
         </Card.Body>
       </Card>
     );

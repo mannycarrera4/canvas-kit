@@ -11,12 +11,7 @@ import {Hyperlink} from '@workday/canvas-kit-react/button';
 import {docs} from './docs';
 import {Value} from './Value';
 import * as types from '../docgen/docTypes';
-import {Card} from '@workday/canvas-kit-react/card';
-import {Flex} from '@workday/canvas-kit-react/layout';
-import {StatusIndicator} from '@workday/canvas-kit-preview-react/status-indicator';
-import {Text} from '@workday/canvas-kit-react/text';
-import {SystemIcon} from '@workday/canvas-kit-react/icon';
-import {exclamationCircleIcon} from '@workday/canvas-system-icons-web';
+
 import {NoteCard} from './NoteCard';
 
 /**
@@ -372,7 +367,6 @@ export const SymbolDoc = ({
 }: SymbolDocProps) => {
   const doc = useDoc({name, fileName});
   const symbolDocBreadcrumb = React.useContext(SymbolDocBreadcrumbsContext);
-  const [noteText, setNoteText] = React.useState('');
   const children = getSymbolDocChildren(doc, meta, name);
 
   const requiresCodeWrapper = [
@@ -406,18 +400,13 @@ export const SymbolDoc = ({
     children
   );
 
-  // console.warn(doc?.descrip  tion);
   let a;
   if (doc?.description.includes('Note')) {
-    const Y = 'Note';
+    const Y = 'Note**:';
     var Z = doc?.description.slice(doc?.description.indexOf('Note') + Y.length);
     a = Z;
     console.warn(Z);
   }
-
-  const trimmedDescription = doc?.description.includes('Note')
-    ? doc.description.split('**Note**:')[0]
-    : doc?.description;
 
   const symbolDocContents = (
     <StyledSymbolDoc {...elemProps}>
