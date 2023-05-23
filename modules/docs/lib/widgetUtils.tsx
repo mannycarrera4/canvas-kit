@@ -402,7 +402,7 @@ export const SymbolDoc = ({
 
   let a;
   if (doc?.description.includes('Note')) {
-    const Y = 'Note**:';
+    const Y = '**Note**:';
     var Z = doc?.description.slice(doc?.description.indexOf('Note') + Y.length);
     a = Z;
     console.warn(Z);

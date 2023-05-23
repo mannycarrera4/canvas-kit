@@ -7,9 +7,10 @@ import {Card} from '@workday/canvas-kit-react/card';
 import {SystemIcon} from '@workday/canvas-kit-react/icon';
 import {exclamationCircleIcon} from '@workday/canvas-system-icons-web';
 import {StatusIndicator} from '@workday/canvas-kit-preview-react/status-indicator';
+import {MdxJSToJSX} from './MDXElements';
 
 export interface NoteCardProps extends BoxProps {
-  message?: string | undefined;
+  message: string;
 }
 
 export const NoteCard = createComponent('div')({
@@ -38,17 +39,7 @@ export const NoteCard = createComponent('div')({
         </Flex>
         <Card.Body>
           <Text lineHeight="24px">
-            {splitMessage?.map(word => {
-              if (word.includes('`')) {
-                const trimmedWord = word.replace(/[`]/g, '');
-                return (
-                  <>
-                    <StatusIndicator emphasis="high">{trimmedWord}</StatusIndicator>{' '}
-                  </>
-                );
-              }
-              return word + ' ';
-            })}
+            <MdxJSToJSX>{message}</MdxJSToJSX>
           </Text>
         </Card.Body>
       </Card>
