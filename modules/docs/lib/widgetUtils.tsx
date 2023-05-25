@@ -12,7 +12,9 @@ import {docs} from './docs';
 import {Value} from './Value';
 import * as types from '../docgen/docTypes';
 
-import {NoteCard} from './NoteCard';
+import {InformationHighlight} from './information-highlight/InformationHighlight';
+import {exclamationCircleIcon} from '@workday/canvas-system-icons-web';
+import {Flex} from '@workday/canvas-kit-react/layout';
 
 /**
  * This context allows us to keep track if we're within a nested stack of dialog
@@ -416,7 +418,14 @@ export const SymbolDoc = ({
           <MdxJSToJSX>{descriptionOverride || doc.description}</MdxJSToJSX>
         )}
         {doc?.description.includes('Note') && (
-          <NoteCard message={a} />
+          <InformationHighlight>
+            <InformationHighlight.Icon color="blueberry400" icon={exclamationCircleIcon} />
+            <InformationHighlight.Container>
+              <InformationHighlight.Heading>Important Note</InformationHighlight.Heading>
+              <InformationHighlight.Message>{a}</InformationHighlight.Message>
+            </InformationHighlight.Container>
+          </InformationHighlight>
+          // <NoteCard message={a} />
           // <Card
           //   depth="none"
           //   borderRadius="m"

@@ -1,3 +1,3 @@
 export {SymbolDoc, SymbolDescription} from './widgetUtils';
-export {NoteCard} from './NoteCard';
+export * from './information-highlight/InformationHighlight';
 import './widgets';
