@@ -9,7 +9,7 @@ For `PrimaryButton`, `SecondaryButton`, `TertiaryButton` or `DeleteButton`, view
 
 ---
 
-## Installation
+## Installation for test
 
 ```sh
 yarn add @workday/canvas-kit-react
