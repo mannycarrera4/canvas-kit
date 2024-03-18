@@ -20,13 +20,12 @@ jobs:
       # Please look up the latest version from
       # https://github.com/amannn/action-semantic-pull-request/releases
       - uses: amannn/action-semantic-pull-request@v3.4.0
+        if: "!contains(github.event.pull_request.title, '[Snyk]')"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           scopes: ${{steps.scope-vars.outputs.scopes}}
           subjectPattern: ^[A-Z].+$
-          types: |
-            Snyk
 
       - uses: Workday/canvas-kit-actions/verify-pull-request@mc-exclude-snyk
         with:
