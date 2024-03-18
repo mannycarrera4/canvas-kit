@@ -25,6 +25,8 @@ jobs:
         with:
           scopes: ${{steps.scope-vars.outputs.scopes}}
           subjectPattern: ^[A-Z].+$
+          ignoreLabels: |
+            snyk
 
       - uses: Workday/canvas-kit-actions/verify-pull-request@mc-exclude-snyk
         with:
