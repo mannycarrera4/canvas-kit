@@ -10,7 +10,9 @@ import {BaseButton} from '@workday/canvas-kit-react/button';
 
 import {PaginationContext} from './usePaginationModel';
 
-const StyledPageButton = styled(BaseButton)<{toggled?: boolean}>(
+const StyledPageButton = styled(BaseButton, {
+  shouldForwardProp: prop => prop !== 'toggled',
+})<{toggled?: boolean}>(
   {
     minWidth: space.l,
     width: space.l,
