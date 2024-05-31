@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'Canvas Kit React',
   tagline: 'Dinosaurs are cool',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/canvas-favicon.ico',
 
   // Set the production url of your site here
   url: 'https://your-docusaurus-site.example.com',
