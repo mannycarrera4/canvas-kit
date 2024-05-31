@@ -2,6 +2,63 @@
 displayed_sidebar: componentsSidebar
 ---
 
-## Buttons
+import {Primary} from '@site/src/components/buttons/primary/Basic';
+import CodeBlock from '@theme/CodeBlock';
+import MyComponentSource from '!!raw-loader!@workday/canvas-kit-docs/dist/mdx/react/button/button/examples/Primary';
 
-hello world
+# Button
+
+Clickable button elements that extend the native `<button>` element with Canvas styling.
+
+[> Workday Design Reference](https://design.workday.com/components/buttons/buttons)
+
+## Installation
+
+```sh
+yarn add @workday/canvas-kit-react
+```
+
+## Usage
+
+### PrimaryButton
+
+The example below shows multiple instances of a `PrimaryButton` with various icon configurations.
+
+Primary Buttons also have an `inverse` variant. While it looks similar to the default Secondary
+Button, the default outline as well as the hover and focus states are different. Use this variant
+when you need to place a Primary Button on a dark or colorful background such as `blueberry400`.
+
+<CodeBlock language="jsx">{MyComponentSource}</CodeBlock>
+
+<Primary />
+
+### SecondaryButton
+
+The example below shows multiple instances of a `SecondaryButton` with various icon configurations.
+
+Secondary Buttons also have an `inverse` variant. Use this when you need to place a Secondary Button
+on a dark or colorful background such as `blueberry400`.
+
+### TertiaryButton
+
+The example below shows multiple instances of a `TertiaryButton` with various icon configurations.
+
+Tertiary Buttons also have an `inverse` variant. Use this when you need to place a Tertiary Button
+on a dark or colorful background such as `blueberry400`.
+
+### DeleteButton
+
+### Custom Styles
+
+All of our buttons support custom styling via the `cs` prop. For more information, check our
+["How To Customize Styles"](https://workday.github.io/canvas-kit/?path=/docs/styling-how-to-customize-styles--page)
+or view the example below.
+
+### Accessible Use of the `as` Prop
+
+Like many of our components, Buttons accept an `as` prop, which lets you change the underlying
+semantic element - usually an `<a>`, or a `<button>`. This should be done with caution to ensure the
+best accessibility. Generally, `<button>` elements should be used for actions, and `<a>` elements
+should be used for navigation.
+
+## Component API

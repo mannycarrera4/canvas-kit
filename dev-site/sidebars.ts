@@ -13,7 +13,7 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 const sidebars: SidebarsConfig = {
   // By default, Docusaurus generates a sidebar from the docs folder structure
   tutorialSidebar: ['tutorial-basics/congratulations'],
-  componentsSidebar: ['button'],
+  componentsSidebar: ['Button'],
 
   // But you can create a sidebar manually
   /*

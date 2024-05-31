@@ -17,13 +17,17 @@
   "dependencies": {
     "@docusaurus/core": "3.3.2",
     "@docusaurus/preset-classic": "3.3.2",
+    "@docusaurus/theme-live-codeblock": "^3.3.2",
     "@mdx-js/react": "^3.0.0",
+    "@workday/canvas-kit-docs": "^11.0.3",
     "@workday/canvas-kit-preview-react": "^11.0.0",
     "@workday/canvas-kit-react": "^11.0.0",
     "@workday/canvas-kit-styling": "^11.0.0",
+    "@workday/canvas-system-icons-web": "^3.0.25",
     "@workday/canvas-tokens-web": "^2.0.0",
     "clsx": "^2.0.0",
     "prism-react-renderer": "^2.3.0",
+    "raw-loader": "^4.0.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },
