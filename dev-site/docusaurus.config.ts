@@ -1,6 +1,7 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+const path = require('path');
 
 const config: Config = {
   title: 'Canvas Kit React',
@@ -40,6 +41,7 @@ const config: Config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          remarkPlugins: [require('./src/whole-source-loader-docusaurus.js')],
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -73,7 +75,7 @@ const config: Config = {
         },
         {to: '/blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/Workday/canvas-kit',
           label: 'GitHub',
           position: 'right',
         },

@@ -5,7 +5,10 @@ module.exports = function sourceAndPropTypeLoader(/** @type string */ source) {
     .replace(/\u2028/g, '\\u2028')
     .replace(/\u2029/g, '\\u2029');
 
+  console.log('raw', raw);
+
   const exports = extractExports(source);
+  console.log('exports', exports);
 
   // rewrite out example files so that we can attach the __RAW__ property
   // This will rewrite this:

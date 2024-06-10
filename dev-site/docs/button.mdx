@@ -3,10 +3,13 @@ displayed_sidebar: componentsSidebar
 sidebar_position: 2
 ---
 
-import {Primary} from '@site/src/components/buttons/primary/Basic';
+import {Primary} from '@site/src/components/buttons/examples/Basic.tsx';
 import CodeBlock from '@theme/CodeBlock';
 import {SymbolDoc} from '@site/src/components/SymbolDoc';
+import {system} from '@workday/canvas-tokens-web';
+import {cssVar} from '@workday/canvas-kit-styling';
 import MyComponentSource from '!!raw-loader!@workday/canvas-kit-docs/dist/mdx/react/button/button/examples/Primary';
+import {ExampleCodeBlock} from '@site/src/components/code/ExampleCodeBlock';
 
 # Button
 
@@ -30,9 +33,7 @@ Primary Buttons also have an `inverse` variant. While it looks similar to the de
 Button, the default outline as well as the hover and focus states are different. Use this variant
 when you need to place a Primary Button on a dark or colorful background such as `blueberry400`.
 
-<CodeBlock language="jsx">{MyComponentSource}</CodeBlock>
-
-<Primary />
+#### Example
 
 ### SecondaryButton
 
