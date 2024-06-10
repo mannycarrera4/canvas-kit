@@ -1,3 +1,4 @@
+import useGlobalData, {usePluginData} from '@docusaurus/useGlobalData';
 import React from 'react';
 
 import {CodeBlockInternal} from './CodeBlock';
@@ -18,7 +19,9 @@ export const ExampleCodeBlock = ({
   scope,
   showCode = false,
 }: ExampleCodeBlockProps) => {
-  console.log('RAW', code);
+  const {fileContent} = usePluginData('whole-source-loader-docusaurus');
+  // console.log('fileContent', fileContent.join('\n'));
+
   return (
     <CodeBlockInternal
       rawCode={code}
@@ -28,7 +31,7 @@ export const ExampleCodeBlock = ({
       showCode={showCode}
       Component={code}
     >
-      {code.__RAW__}
+      {fileContent}
     </CodeBlockInternal>
   );
 };

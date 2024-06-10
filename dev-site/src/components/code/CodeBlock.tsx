@@ -5,7 +5,7 @@ import {space, colors, commonColors, borderRadius, type} from '@workday/canvas-k
 import {Box} from '@workday/canvas-kit-react/layout';
 import {Tooltip} from '@workday/canvas-kit-react/tooltip';
 import {extLinkIcon} from '@workday/canvas-system-icons-web';
-import {CodeBlock as DocusarusCodeBlock} from '@theme/CodeBlock';
+import CodeBlock from '@theme/CodeBlock';
 
 import {CodeBlockButton, CodeBlockButtonBar} from './CodeBlockButton';
 import theme from './canvasPrismTheme';
@@ -71,8 +71,9 @@ export const CodeBlockInternal = ({
 }: CodeBlockProps) => {
   const language = className?.replace(/(language-|lang-)/, '') as Language;
 
-  const codeCode = children;
-  console.log('raw code', rawCode ? rawCode.__RAW__ : 'foo');
+  const codeCode = children.trim();
+  // console.log(codeCode.join(''));
+
   const [isCodeVisible, setIsCodeVisible] = React.useState(showCode);
   const [isCopied, setIsCopied] = React.useState(false);
 
@@ -182,13 +183,15 @@ export const CodeBlockInternal = ({
                 if Code is narrower than the Box.
               */}
               <Box display="inline-block" minWidth="100%">
+                <CodeBlock language="jsx">{`${codeCode}`}</CodeBlock>
+
                 {/* foo bar */}
                 {/* <DocusarusCodeBlock
                   language="jsx"
                   title="/src/components/HelloCodeTitle.js"
                   showLineNumbers
                 >
-
+                  {codeCode}
                 </DocusarusCodeBlock> */}
                 {/* <Code code={codeCode} language={language} theme={theme} /> */}
                 <CodeBlockButtonBar>

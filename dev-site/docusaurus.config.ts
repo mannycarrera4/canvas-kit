@@ -41,7 +41,6 @@ const config: Config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          remarkPlugins: [require('./src/whole-source-loader-docusaurus.js')],
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -49,7 +48,12 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
-
+  plugins: [
+    [
+      path.resolve(__dirname, 'plugins/whole-source-loader-docusaurus'),
+      {filePath: path.resolve(__dirname, 'src/components/buttons/examples/Basic.tsx')}, // Provide the path to your file
+    ],
+  ],
   themeConfig: {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
