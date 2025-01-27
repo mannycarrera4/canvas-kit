@@ -1,6 +1,6 @@
 import React from 'react';
 // @ts-ignore: Cannot find module error
-import headerImage from './storybook-welcome-header.png';
+import headerImage from './canvas-kit-storybook-banner.png';
 import {Flex, Grid, Box} from '@workday/canvas-kit-react/layout';
 import {InstallBlock} from './installBlock';
 import {Text, Heading} from '@workday/canvas-kit-react/text';
@@ -9,8 +9,6 @@ import {ExternalHyperlink, Hyperlink} from '@workday/canvas-kit-react/button';
 import {colors} from '@workday/canvas-kit-react/tokens';
 import {rocketIcon, tokensIcon, shapesIcon} from '@workday/canvas-system-icons-web';
 import {SystemIcon} from '@workday/canvas-kit-react/icon';
-import {system} from '@workday/canvas-tokens-web';
-import {cssVar} from '@workday/canvas-kit-styling';
 // @ts-ignore: Cannot find module error
 import {version} from '../../../lerna.json';
 
@@ -18,14 +16,7 @@ export const WelcomePage = () => {
   return (
     <Flex flexDirection="column" gap="s" marginBottom="m">
       <Box borderRadius="m" overflow="hidden" position="relative">
-        <Flex position="absolute" flexDirection="column" top="30%" left="10%">
-          <Text
-            typeLevel="title.medium"
-            color={colors.frenchVanilla100}
-            style={{lineHeight: '3vmin', fontSize: '6vmin', marginBottom: cssVar(system.space.x4)}}
-          >
-            Canvas Kit
-          </Text>
+        <Flex position="absolute" flexDirection="column" top="70%" left="calc(50% - 45px)">
           <Text
             typeLevel="body.large"
             style={{lineHeight: '2vw', fontSize: '3vmin'}}
@@ -103,7 +94,7 @@ export const WelcomePage = () => {
             alignSelf="end"
             as={Hyperlink}
             marginTop="xs"
-            href="https://workday.github.io/canvas-kit/?path=/docs/tokens--overview"
+            href="https://workday.github.io/canvas-tokens/?path=/docs/docs-getting-started--docs"
           >
             {' '}
             View Our Tokens
