@@ -26,6 +26,8 @@ export const orientationKeyMap = {
 
 const rightToLeftMap = {
   ArrowLeft: 'ArrowRight',
+  ArrowUp: 'ArrowUp',
+  ArrowDown: 'ArrowDown',
   Left: 'Right',
   ArrowRight: 'ArrowLeft',
   Right: 'Left',
