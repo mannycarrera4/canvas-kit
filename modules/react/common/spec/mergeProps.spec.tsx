@@ -143,4 +143,17 @@ describe('mergeProps', () => {
       fontSize: '16px',
     });
   });
+  it('should merge classNames', () => {
+    const target = {
+      className: 'foo',
+    };
+    const source = {
+      className: 'bar',
+    };
+
+    const mergedProps = mergeProps(target, source);
+    render(<div data-testid="test" {...mergedProps} />);
+
+    expect(screen.getByTestId('test')).toHaveClass('foo bar');
+  });
 });
