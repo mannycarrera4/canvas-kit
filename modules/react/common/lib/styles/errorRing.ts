@@ -1,4 +1,4 @@
-import {EmotionCanvasTheme} from '../theming/index';
+import {EmotionCanvasTheme} from '../../../theming/lib/index';
 import {ErrorType} from '../types';
 import {CSSObject} from '@emotion/styled';
 import {brand, system} from '@workday/canvas-tokens-web';

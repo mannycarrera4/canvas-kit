@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Themeable, createSubcomponent, ExtractProps} from '@workday/canvas-kit-react/common';
+import {createSubcomponent, ExtractProps} from '@workday/canvas-kit-react/common';
 import {useRadioModel} from './hooks/useRadioModel';
 import {Flex, mergeStyles} from '@workday/canvas-kit-react/layout';
 import {RadioInput} from './RadioInput';
@@ -14,8 +14,7 @@ interface RadioLabelContextInterface {
   value?: string | number;
 }
 export interface RadioLabelProps
-  extends Themeable,
-    CSProps,
+  extends CSProps,
     ExtractProps<typeof Flex, never>,
     RadioLabelContextInterface {
   /**

@@ -1,15 +1,11 @@
 import * as React from 'react';
-import {
-  createComponent,
-  expandHex,
-  GrowthBehavior,
-  ErrorType,
-} from '@workday/canvas-kit-react/common';
+import {createComponent, GrowthBehavior, ErrorType} from '@workday/canvas-kit-react/common';
 import {TextInput, TextInputProps} from '@workday/canvas-kit-react/text-input';
 import {ColorSwatch} from './parts/ColorSwatch';
 import {calc, createStencil, handleCsProp, px2rem} from '@workday/canvas-kit-styling';
 import {system} from '@workday/canvas-tokens-web';
 import {Subtext} from '@workday/canvas-kit-react/text';
+import {expandHex} from '@workday/canvas-kit-react/theming';
 
 export interface ColorInputProps extends TextInputProps, GrowthBehavior {
   /**

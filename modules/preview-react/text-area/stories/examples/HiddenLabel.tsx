@@ -1,6 +1,7 @@
 import React from 'react';
 import {TextArea} from '@workday/canvas-kit-preview-react/text-area';
-import {accessibleHide, styled} from '@workday/canvas-kit-react/common';
+import {styled} from '@workday/canvas-kit-react/theming';
+import {accessibleHide} from '@workday/canvas-kit-react/common';
 
 const StyledTextAreaLabel = styled(TextArea.Label)({
   ...accessibleHide,

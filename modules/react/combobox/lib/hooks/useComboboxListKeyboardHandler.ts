@@ -1,5 +1,6 @@
 import React from 'react';
-import {createElemPropsHook, useIsRTL} from '@workday/canvas-kit-react/common';
+import {createElemPropsHook} from '@workday/canvas-kit-react/common';
+import {useIsRTL} from '@workday/canvas-kit-react/theming';
 import {keyboardEventToCursorEvents} from '@workday/canvas-kit-react/collection';
 
 import {useComboboxModel} from './useComboboxModel';

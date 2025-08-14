@@ -7,7 +7,8 @@ import {
 import {FormField} from '@workday/canvas-kit-react/form-field';
 import {StyledMenuItem} from '@workday/canvas-kit-react/menu';
 import {TextInput} from '@workday/canvas-kit-react/text-input';
-import {CanvasProvider, ContentDirection, ExtractProps} from '@workday/canvas-kit-react/common';
+import {CanvasProvider, ExtractProps} from '@workday/canvas-kit-react/common';
+import {ContentDirection} from '@workday/canvas-kit-react/theming';
 
 const autocompleteResult = (
   textModifier: number,

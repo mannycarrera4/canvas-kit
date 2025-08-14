@@ -1,4 +1,5 @@
-import {CanvasTheme, EmotionCanvasTheme, useTheme} from '@workday/canvas-kit-react/common';
+import {CanvasTheme, EmotionCanvasTheme} from '../lib/types';
+import {useTheme} from '../lib/useTheme';
 import {brand, system} from '@workday/canvas-tokens-web';
 import {CSSProperties, statusColors} from '@workday/canvas-kit-react/tokens';
 import {cssVar} from '@workday/canvas-kit-styling';

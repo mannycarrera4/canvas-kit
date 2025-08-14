@@ -34,6 +34,7 @@ export * from './testing';
 export * from './text';
 export * from './text-area';
 export * from './text-input';
+export * from './theming';
 export * from './toast';
 export * from './tokens';
 export * from './tooltip';

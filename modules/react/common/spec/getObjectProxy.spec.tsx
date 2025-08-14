@@ -1,4 +1,4 @@
-import {getObjectProxy} from '../lib/theming';
+import {getObjectProxy} from '../../theming/lib';
 
 describe('getObjectProxy', () => {
   it('should use fallback property when target is an empty object', () => {

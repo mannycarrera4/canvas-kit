@@ -1,4 +1,5 @@
-import {CanvasProvider, ContentDirection} from '@workday/canvas-kit-react/common';
+import {CanvasProvider} from '@workday/canvas-kit-react/common';
+import {ContentDirection} from '@workday/canvas-kit-react/theming';
 import {
   gridIcon,
   listViewIcon,

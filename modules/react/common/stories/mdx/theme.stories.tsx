@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import {Meta, StoryObj} from '@storybook/react';
 import {CanvasProvider} from '../../index';
-import {CanvasTheme, CanvasThemePalette, Themeable} from '../../lib/theming';
+import {CanvasTheme, CanvasThemePalette, Themeable} from '../../../theming/lib';
 import {colors, type, space, borderRadius} from '@workday/canvas-kit-react/tokens';
 import {useTheme} from '@workday/canvas-kit-react/common';
 import {StyledType} from '../../lib/utils';

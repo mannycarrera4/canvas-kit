@@ -5,7 +5,7 @@ Canvas Kit Common contains wrappers and types to enabling theming of Canvas comp
 ## Installation
 
 ```sh
-yarn add @workday/canvas-kit-react/common
+yarn add @workday/canvas-kit-react/theming
 ```
 
 ## Usage
@@ -17,7 +17,7 @@ our Canvas Components.
 
 ```tsx
 import * as React from 'react';
-import {CanvasProvider} from '@workday/canvas-kit-react/common';
+import {CanvasProvider} from '@workday/canvas-kit-react/theming';
 
 <CanvasProvider>{/* All your components containing any Canvas components */}</CanvasProvider>;
 ```
@@ -120,7 +120,7 @@ If you only set a `main` color, the rest of the respective palette will be autom
 Example:
 
 ```tsx
-import {CanvasProvider, EmotionCanvasTheme} from '@workday/canvas-kit-react/common';
+import {CanvasProvider, EmotionCanvasTheme} from '@workday/canvas-kit-react/theming';
 
 const theme: EmotionCanvasTheme = {
   canvas: {
@@ -153,7 +153,7 @@ import {
   CanvasProvider,
   ContentDirection,
   EmotionCanvasTheme,
-} from '@workday/canvas-kit-react/common';
+} from '@workday/canvas-kit-react/theming';
 
 const rtlTheme: EmotionCanvasTheme = {
   canvas: {
@@ -178,7 +178,7 @@ import {
   EmotionCanvasTheme,
   PartialEmotionCanvasTheme,
   ContentDirection,
-} from '@workday/canvas-kit-react/common';
+} from '@workday/canvas-kit-react/theming';
 import {Switch} from '@workday/canvas-kit-react/switch';
 
 const rtlTheme: EmotionCanvasTheme = {
@@ -277,7 +277,7 @@ Below is an example of how to use `getTheme` to build responsive media query sty
 breakpoint functions provided in the theme.
 
 ```tsx
-import {getTheme} from '@workday/canvas-kit-react/common';
+import {getTheme} from '@workday/canvas-kit-react/theming';
 
 const theme = getTheme();
 const {up, down} = theme.canvas.breakpoints;
@@ -322,7 +322,7 @@ direction, which can be passed to either `useTheme` or `getTheme`. These functio
 merge your the partial theme with the default Canvas theme and return a complete theme object.
 
 ```tsx
-import {ContentDirection, useTheme, getTheme} from '@workday/canvas-kit-react/common';
+import {ContentDirection, useTheme, getTheme} from '@workday/canvas-kit-react/theming';
 
 const customTheme = {
   canvas: {
@@ -368,7 +368,7 @@ And these are our standard screen size ranges:
 Our breakpoint system is customized within the theme object. `theme.canvas.breakpoints.values`.
 
 ```ts
-import {useTheme} from '@workday/canvas-kit-react/common';
+import {useTheme} from '@workday/canvas-kit-react/theming';
 import {space} from '@workday/canvas-kit-react/tokens';
 
 const {theme} = useTheme();
@@ -397,7 +397,7 @@ Given a `start` breakpoint key ("zero", "s", "m", "l", "xl"), this function retu
 (string) using a `min-width`.
 
 ```ts
-import {useTheme} from '@workday/canvas-kit-react/common';
+import {useTheme} from '@workday/canvas-kit-react/theming';
 import {space} from '@workday/canvas-kit-react/tokens';
 
 const theme = useTheme();
@@ -424,7 +424,7 @@ If the `xl` breakpoint is provided, this function returns a media query with onl
 `0`, as seen in the second example below.
 
 ```ts
-import {useTheme} from '@workday/canvas-kit-react/common';
+import {useTheme} from '@workday/canvas-kit-react/theming';
 import {space} from '@workday/canvas-kit-react/tokens';
 
 const theme = useTheme();
@@ -440,7 +440,7 @@ const styles = {
 This example uses the `xl` breakpoint and only adds a `min-width` of `0` to the media query.
 
 ```ts
-import {useTheme} from '@workday/canvas-kit-react/common';
+import {useTheme} from '@workday/canvas-kit-react/theming';
 import {space} from '@workday/canvas-kit-react/tokens';
 
 const theme = useTheme();
@@ -467,7 +467,7 @@ If the `xl` breakpoint is provided, this function returns a media query with onl
 seen in the second example below.
 
 ```ts
-import {useTheme} from '@workday/canvas-kit-react/common';
+import {useTheme} from '@workday/canvas-kit-react/theming';
 import {space} from '@workday/canvas-kit-react/tokens';
 
 const theme = useTheme();
@@ -484,7 +484,7 @@ const styles = {
 This example uses `xl` as the `end` breakpoint and only adds a min-width to the media query.
 
 ```ts
-import {useTheme} from '@workday/canvas-kit-react/common';
+import {useTheme} from '@workday/canvas-kit-react/theming';
 import {space} from '@workday/canvas-kit-react/tokens';
 
 const theme = useTheme();
@@ -511,7 +511,7 @@ If the `xl` breakpoint is provided, this function returns a media query with onl
 `1440px`, as seen in the second example below.
 
 ```ts
-import {useTheme} from '@workday/canvas-kit-react/common';
+import {useTheme} from '@workday/canvas-kit-react/theming';
 import {space} from '@workday/canvas-kit-react/tokens';
 
 const theme = useTheme();
@@ -527,7 +527,7 @@ const styles = {
 This example uses the `xl` breakpoint and only adds a `min-width` of `1440px` to the media query.
 
 ```ts
-import {useTheme} from '@workday/canvas-kit-react/common';
+import {useTheme} from '@workday/canvas-kit-react/theming';
 import {space} from '@workday/canvas-kit-react/tokens';
 
 const theme = useTheme();

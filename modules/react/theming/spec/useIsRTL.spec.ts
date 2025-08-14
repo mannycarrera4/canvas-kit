@@ -1,5 +1,5 @@
 import {renderHook} from '@testing-library/react-hooks';
-import {ContentDirection, useIsRTL} from '../lib/theming';
+import {ContentDirection, useIsRTL} from '../lib';
 
 describe('useIsRTL hook', () => {
   it("should return true when the theme's content direction is RTL", () => {

@@ -1,7 +1,8 @@
 import React, {useState, useEffect, useLayoutEffect, useCallback} from 'react';
 
 import {CSSObject} from '@emotion/styled';
-import {EmotionCanvasTheme, ErrorType, Themeable, styled} from '@workday/canvas-kit-react/common';
+import {ErrorType} from '@workday/canvas-kit-react/common';
+import {Themeable, styled, EmotionCanvasTheme} from '@workday/canvas-kit-react/theming';
 import {
   Placement,
   Popper,

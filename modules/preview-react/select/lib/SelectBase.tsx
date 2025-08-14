@@ -4,11 +4,10 @@ import {
   GrowthBehavior,
   ErrorType,
   StyledType,
-  Themeable,
   errorRing,
-  styled,
   useUniqueId,
 } from '@workday/canvas-kit-react/common';
+import {styled, Themeable} from '@workday/canvas-kit-react/theming';
 import {colors, borderRadius, inputColors, type, space} from '@workday/canvas-kit-react/tokens';
 import {caretDownSmallIcon} from '@workday/canvas-system-icons-web';
 import {SystemIcon} from '@workday/canvas-kit-react/icon';

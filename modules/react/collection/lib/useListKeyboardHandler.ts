@@ -1,5 +1,6 @@
 import React from 'react';
-import {useIsRTL, createElemPropsHook} from '@workday/canvas-kit-react/common';
+import {createElemPropsHook} from '@workday/canvas-kit-react/common';
+import {useIsRTL} from '@workday/canvas-kit-react/theming';
 
 import {useCursorListModel} from './useCursorListModel';
 import {keyboardEventToCursorEvents} from './keyUtils';

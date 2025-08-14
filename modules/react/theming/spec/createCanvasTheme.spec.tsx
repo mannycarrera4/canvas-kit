@@ -1,7 +1,7 @@
 import colors from '@workday/canvas-colors-web';
-import {defaultCanvasTheme, createCanvasTheme, PartialCanvasTheme} from '../lib/theming';
-import {shiftColor} from '../lib/theming/createCanvasTheme';
-import {deepMerge} from '../lib/utils/deepMerge';
+import {defaultCanvasTheme, createCanvasTheme, PartialCanvasTheme} from '../lib';
+import {shiftColor} from '../lib/createCanvasTheme';
+import {deepMerge} from '@workday/canvas-kit-react/common';
 
 describe('createCanvasTheme', () => {
   test('calling without any input provides the default theme', () => {

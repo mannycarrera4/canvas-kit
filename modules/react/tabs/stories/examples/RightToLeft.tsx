@@ -1,6 +1,6 @@
 import {space} from '@workday/canvas-kit-react/tokens';
-import {CanvasProvider, ContentDirection} from '@workday/canvas-kit-react/common';
-
+import {CanvasProvider} from '@workday/canvas-kit-react/common';
+import {ContentDirection} from '@workday/canvas-kit-react/theming';
 import {Tabs} from '@workday/canvas-kit-react/tabs';
 
 export const RightToLeft = () => {

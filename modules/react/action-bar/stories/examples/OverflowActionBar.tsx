@@ -1,5 +1,5 @@
 import React from 'react';
-import {breakpoints} from '@workday/canvas-kit-react/common';
+import {breakpoints} from '@workday/canvas-kit-react/theming';
 import {ActionBar, useActionBarModel} from '@workday/canvas-kit-react/action-bar';
 import {PrimaryButton} from '@workday/canvas-kit-react/button';
 import {SegmentedControl} from '@workday/canvas-kit-preview-react/segmented-control';

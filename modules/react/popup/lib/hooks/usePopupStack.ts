@@ -1,7 +1,8 @@
 import React from 'react';
 
 import {PopupStack} from '@workday/canvas-kit-popup-stack';
-import {useLocalRef, useIsRTL, useCanvasThemeToCssVars} from '@workday/canvas-kit-react/common';
+import {useLocalRef, useCanvasThemeToCssVars} from '@workday/canvas-kit-react/common';
+import {useIsRTL} from '@workday/canvas-kit-react/theming';
 import {ThemeContext, Theme} from '@emotion/react';
 
 /**

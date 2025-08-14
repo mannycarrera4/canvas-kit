@@ -1,4 +1,4 @@
-import {BreakpointKey, up, down, between, only} from '../lib/theming';
+import {BreakpointKey, up, down, between, only} from '../lib';
 const context = describe;
 
 describe('Breakpoints', () => {

@@ -1,5 +1,5 @@
 import {colors} from '@workday/canvas-kit-react/tokens';
-import {getColor, pickForegroundColor} from '../index';
+import {getColor, pickForegroundColor} from '../lib/utils/colorUtils';
 
 describe('Color Utils methods', () => {
   describe('pickForegroundColor', () => {

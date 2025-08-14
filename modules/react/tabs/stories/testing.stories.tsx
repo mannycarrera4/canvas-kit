@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {setupIcon} from '@workday/canvas-system-icons-web';
-import {PartialEmotionCanvasTheme, ContentDirection} from '@workday/canvas-kit-react/common';
+import {PartialEmotionCanvasTheme, ContentDirection} from '@workday/canvas-kit-react/theming';
 import {ComponentStatesTable, StaticStates} from '@workday/canvas-kit-react/testing';
 import {customColorTheme} from '../../../../utils/storybook';
 

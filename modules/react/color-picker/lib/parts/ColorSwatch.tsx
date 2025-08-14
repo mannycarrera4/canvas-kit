@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import {pickForegroundColor} from '@workday/canvas-kit-react/common';
+import {pickForegroundColor} from '@workday/canvas-kit-react/theming';
 import {checkSmallIcon} from '@workday/canvas-system-icons-web';
 import {SystemIcon, systemIconStencil} from '@workday/canvas-kit-react/icon';
 import {calc, createStencil, handleCsProp, px2rem} from '@workday/canvas-kit-styling';

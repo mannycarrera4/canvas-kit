@@ -1,5 +1,5 @@
 import {isWithinBreakpoint} from '../lib/utils/isWithinBreakpoint';
-import {breakpoints} from '../lib/theming';
+import {breakpoints} from '../lib';
 const context = describe;
 
 describe('isWithinBreakpoint', () => {

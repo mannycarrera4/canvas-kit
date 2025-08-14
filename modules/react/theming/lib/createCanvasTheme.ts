@@ -9,11 +9,11 @@ import {
   ContentDirection,
 } from './types';
 import {CanvasColor} from '@workday/canvas-kit-react/tokens';
-import {pickForegroundColor} from '../utils';
+import {pickForegroundColor} from './utils/colorUtils';
 
 // Should these be exported?
-import {deepMerge} from '../utils/deepMerge';
-import {memoize} from '../utils/memoize';
+import {deepMerge} from '../../common/lib/utils/deepMerge';
+import {memoize} from '../../common/lib/utils/memoize';
 
 export const shiftColor = memoize(
   (hexColor: string, amount = 100) => {

@@ -1,7 +1,8 @@
 import {colors} from '@workday/canvas-kit-react/tokens';
 import {CanvasAccentIcon, CanvasIconTypes} from '@workday/design-assets-types';
 import {CSSObject} from '@emotion/styled';
-import {createComponent, getColor} from '@workday/canvas-kit-react/common';
+import {createComponent} from '@workday/canvas-kit-react/common';
+import {getColor} from '@workday/canvas-kit-react/theming';
 import {SystemPropValues} from '@workday/canvas-kit-react/layout';
 import {createStencil, cssVar, handleCsProp, px2rem} from '@workday/canvas-kit-styling';
 import {system} from '@workday/canvas-tokens-web';

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Theme, ThemeProvider, CacheProvider} from '@emotion/react';
 import {InputProvider} from './InputProvider';
-import {defaultCanvasTheme, PartialEmotionCanvasTheme, useTheme} from './theming';
+import {defaultCanvasTheme, PartialEmotionCanvasTheme, useTheme} from '../../theming/lib';
 import {brand, base} from '@workday/canvas-tokens-web';
 import {createStyles, getCache} from '@workday/canvas-kit-styling';
 

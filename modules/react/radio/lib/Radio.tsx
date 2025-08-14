@@ -4,10 +4,9 @@ import {
   StyledType,
   focusRing,
   mouseFocusBehavior,
-  styled,
-  Themeable,
   useUniqueId,
 } from '@workday/canvas-kit-react/common';
+import {styled, Themeable} from '@workday/canvas-kit-react/theming';
 import {borderRadius, colors, inputColors, space} from '@workday/canvas-kit-react/tokens';
 import {LabelText} from '@workday/canvas-kit-react/text';
 import {px2rem} from '@workday/canvas-kit-styling';

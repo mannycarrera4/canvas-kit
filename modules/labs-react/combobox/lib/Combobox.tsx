@@ -1,13 +1,7 @@
 import React, {useEffect, useLayoutEffect, useRef, useState, useCallback} from 'react';
 import {jsx, keyframes, CSSObject} from '@emotion/react';
-import {
-  GrowthBehavior,
-  useForkRef,
-  styled,
-  useIsRTL,
-  useUniqueId,
-  filterOutProps,
-} from '@workday/canvas-kit-react/common';
+import {GrowthBehavior, useForkRef, useUniqueId} from '@workday/canvas-kit-react/common';
+import {styled, useIsRTL, filterOutProps} from '@workday/canvas-kit-react/theming';
 import {space, commonColors, borderRadius} from '@workday/canvas-kit-react/tokens';
 import {Card} from '@workday/canvas-kit-react/card';
 import {TertiaryButton, TertiaryButtonProps} from '@workday/canvas-kit-react/button';

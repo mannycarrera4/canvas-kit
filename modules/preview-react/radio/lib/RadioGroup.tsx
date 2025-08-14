@@ -1,4 +1,4 @@
-import {createContainer, Themeable, ErrorType} from '@workday/canvas-kit-react/common';
+import {createContainer, ErrorType} from '@workday/canvas-kit-react/common';
 import {useRadioModel} from './hooks/useRadioModel';
 import {FlexProps, mergeStyles} from '@workday/canvas-kit-react/layout';
 import {RadioLabel} from './RadioLabel';
@@ -6,7 +6,7 @@ import {RadioButton} from './RadioButton';
 import {createStencil, CSProps, calc, px2rem} from '@workday/canvas-kit-styling';
 import {brand, system} from '@workday/canvas-tokens-web';
 
-export interface RadioGroupProps extends Themeable, CSProps, FlexProps {
+export interface RadioGroupProps extends CSProps, FlexProps {
   /**
    * The type of error associated with the RadioGroup (if applicable).
    */
@@ -84,6 +84,6 @@ export const RadioGroup = createContainer('div')({
      */
     Label: RadioLabel,
   },
-})<RadioGroupProps>(({children, error, theme, ...elemProps}, Element) => {
+})<RadioGroupProps>(({children, error, ...elemProps}, Element) => {
   return <Element {...mergeStyles(elemProps, radioGroupStencil({error}))}>{children}</Element>;
 });

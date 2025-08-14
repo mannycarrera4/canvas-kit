@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {screen, render} from '@testing-library/react';
 import {renderHook} from '@testing-library/react-hooks';
-import {CanvasProvider} from '../index';
-import {defaultCanvasTheme, createCanvasTheme, useTheme} from '../lib/theming';
+import {CanvasProvider} from '../../common/index';
+import {defaultCanvasTheme, createCanvasTheme, useTheme} from '../lib';
 
 describe('useTheme', () => {
   const customTheme = {

@@ -1,10 +1,6 @@
 import * as React from 'react';
-import {
-  defaultCanvasTheme,
-  CanvasProvider,
-  PartialEmotionCanvasTheme,
-} from '@workday/canvas-kit-react/common';
-
+import {CanvasProvider} from '@workday/canvas-kit-react/common';
+import {PartialEmotionCanvasTheme, defaultCanvasTheme} from '@workday/canvas-kit-react/theming';
 import {makeDecorator, useArgs} from '@storybook/preview-api';
 
 export default makeDecorator({

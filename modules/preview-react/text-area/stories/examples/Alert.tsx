@@ -1,6 +1,6 @@
 import React from 'react';
 import {TextArea} from '@workday/canvas-kit-preview-react/text-area';
-import {useThemedRing} from '@workday/canvas-kit-react/common';
+import {useThemedRing} from '@workday/canvas-kit-react/theming';
 import {space, colors} from '@workday/canvas-kit-react/tokens';
 import {Text} from '@workday/canvas-kit-react/text';
 

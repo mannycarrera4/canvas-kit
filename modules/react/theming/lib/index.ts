@@ -7,3 +7,6 @@ export * from './useTheme';
 export * from './useThemedRing';
 export * from './useIsRTL';
 export * from './getObjectProxy';
+export * from './utils/colorUtils';
+export * from './utils/isWithinBreakpoint';
+export * from './utils/makeMq';
