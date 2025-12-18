@@ -13,14 +13,16 @@ import {system} from '@workday/canvas-tokens-web';
 
 export interface SidePanelToggleButtonProps extends ExtractProps<typeof TertiaryButton> {
   /**
-   * The tooltip text to expand the side panel
+   * The tooltip text to expand the side panel. The tooltip is of type "muted" by default. This is part of the visual content design, and not meant to describe the state for non-visual screen reader users.
+   * We want to keep the labels for icon buttons static and consistent if possible for screen readers and we use aria-pressed on the ToggleButton to communicate the state of SidePanel for screen readers.
    */
   tooltipTextExpand?: string;
   /**
-   * The tooltip text to collapse the side panel
+   * The tooltip text to collapse the side panel. The tooltip is of type "muted" by default. This is part of the visual content design, and not meant to describe the state for non-visual screen reader users.
+   * We want to keep the labels for icon buttons static and consistent if possible for screen readers and we use aria-pressed on the ToggleButton to communicate the state of SidePanel for screen readers.
    */
   tooltipTextCollapse?: string;
-  tooltipProps?: Omit<TooltipProps, 'children'>;
+  tooltipProps?: Omit<TooltipProps, 'children' | 'type'>;
 }
 
 export const sidePanelToggleButtonStencil = createStencil({
@@ -124,8 +126,7 @@ export const useSidePanelToggleButtonElemProps = createElemPropsHook(useSidePane
   ({state}) => {
     return {
       'aria-controls': state.panelId,
-      'aria-expanded': state.transitionState === 'expanded',
-      'aria-labelledby': state.labelId,
+      'aria-pressed': state.transitionState === 'expanded',
     };
   }
 );
@@ -139,8 +140,8 @@ export const SidePanelToggleButton = createSubcomponent('button')({
     {
       variant = undefined,
       icon = transformationImportIcon,
-      tooltipTextExpand = 'Expand',
-      tooltipTextCollapse = 'Collapse',
+      tooltipTextExpand = 'Expand View',
+      tooltipTextCollapse = 'Collapse View',
       tooltipProps,
       ...elemProps
     }: SidePanelToggleButtonProps,
