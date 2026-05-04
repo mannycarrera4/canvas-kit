@@ -136,7 +136,7 @@ export const defaultBranding = createStyles({
   [brand.success.lightest]: base.green25,
   [brand.error.accent]: base.neutral0,
   [brand.error.darkest]: base.red800,
-  [brand.error.dark]: base.red700,
+  [brand.error.dark]: base.red500,
   [brand.error.base]: base.red600,
   [brand.error.light]: base.red200,
   [brand.error.lighter]: base.red50,
@@ -202,6 +202,126 @@ export const defaultBranding = createStyles({
   [system.color.brand.surface.selected]: brand.primary.lighter,
 });
 
+export const resetBrandingTheme = createStyles({
+  // Primary
+  [brand.primary25]: base.blue25,
+  [brand.primary50]: base.blue50,
+  [brand.primary100]: base.blue100,
+  [brand.primary200]: base.blue200,
+  [brand.primary300]: base.blue300,
+  [brand.primary400]: base.blue400,
+  [brand.primary500]: 'magenta',
+  [brand.primary600]: 'cyan',
+  [brand.primary700]: base.blue700,
+  [brand.primary800]: base.blue800,
+  [brand.primary900]: base.blue900,
+  [brand.primary950]: base.blue950,
+  [brand.primary975]: base.blue975,
+  [brand.primaryA25]: base.blueA25,
+  [brand.primaryA50]: base.blueA50,
+  [brand.primaryA100]: base.blueA100,
+  [brand.primaryA200]: base.blueA200,
+
+  // Critical
+  [brand.critical25]: base.red25,
+  [brand.critical50]: base.red50,
+  [brand.critical100]: base.red100,
+  [brand.critical200]: base.red200,
+  [brand.critical300]: base.red300,
+  [brand.critical400]: base.red400,
+  [brand.critical500]: base.red500,
+  [brand.critical600]: base.red600,
+  [brand.critical700]: base.red700,
+  [brand.critical800]: base.red800,
+  [brand.critical900]: base.red900,
+  [brand.critical950]: base.red950,
+  [brand.critical975]: base.red975,
+  [brand.criticalA25]: base.redA25,
+  [brand.criticalA50]: base.redA50,
+  [brand.criticalA100]: base.redA100,
+  [brand.criticalA200]: base.redA200,
+
+  // Caution
+  [brand.caution25]: base.amber25,
+  [brand.caution50]: base.amber50,
+  [brand.caution100]: base.amber100,
+  [brand.caution200]: base.amber200,
+  [brand.caution300]: base.amber300,
+  [brand.caution400]: base.amber400,
+  [brand.caution500]: base.amber500,
+  [brand.caution600]: base.amber600,
+  [brand.caution700]: base.amber700,
+  [brand.caution800]: base.amber800,
+  [brand.caution900]: base.amber900,
+  [brand.caution950]: base.amber950,
+  [brand.caution975]: base.amber975,
+  [brand.cautionA25]: base.amberA25,
+  [brand.cautionA50]: base.amberA50,
+  [brand.cautionA100]: base.amberA100,
+  [brand.cautionA200]: base.amberA200,
+
+  // Positive
+  [brand.positive25]: base.green25,
+  [brand.positive50]: base.green50,
+  [brand.positive100]: base.green100,
+  [brand.positive200]: base.green200,
+  [brand.positive300]: base.green300,
+  [brand.positive400]: base.green400,
+  [brand.positive500]: base.green500,
+  [brand.positive600]: base.green600,
+  [brand.positive700]: base.green700,
+  [brand.positive800]: base.green800,
+  [brand.positive900]: base.green900,
+  [brand.positive950]: base.green950,
+  [brand.positive975]: base.green975,
+  [brand.positiveA25]: base.greenA25,
+  [brand.positiveA50]: base.greenA50,
+  [brand.positiveA100]: base.greenA100,
+  [brand.positiveA200]: base.greenA200,
+  [system.color.brand.accent.primary]: brand.primary600,
+
+  // Common
+  [brand.common.focus]: base.blue500,
+  [brand.common.critical]: base.red500,
+  [brand.common.caution.inner]: base.amber400,
+  [brand.common.caution.outer]: base.amber500,
+
+  // System Brand
+  [system.color.brand.accent.primary]: brand.primary600,
+  [system.color.brand.accent.critical]: brand.critical600,
+  [system.color.brand.accent.caution]: brand.caution400,
+  [system.color.brand.accent.positive]: brand.positive600,
+
+  [system.color.brand.fg.primary.default]: brand.primary600,
+  [system.color.brand.fg.primary.strong]: brand.primary700,
+  [system.color.brand.fg.critical.default]: brand.critical600,
+  [system.color.brand.fg.critical.strong]: brand.critical700,
+  [system.color.brand.fg.caution.default]: brand.caution600,
+  [system.color.brand.fg.caution.strong]: brand.caution700,
+  [system.color.brand.fg.positive.default]: brand.positive600,
+  [system.color.brand.fg.positive.strong]: brand.positive700,
+  [system.color.brand.fg.selected]: brand.primary700,
+
+  [system.color.brand.focus.primary]: brand.primary500,
+  [system.color.brand.focus.critical]: brand.critical500,
+  [system.color.brand.focus.caution.inner]: brand.caution400,
+  [system.color.brand.focus.caution.outer]: brand.caution500,
+
+  [system.color.brand.border.primary]: brand.primary500,
+  [system.color.brand.border.critical]: brand.critical500,
+  [system.color.brand.border.caution]: brand.caution500,
+
+  [system.color.brand.surface.primary.default]: brand.primary25,
+  [system.color.brand.surface.primary.strong]: brand.primary50,
+  [system.color.brand.surface.critical.default]: brand.critical25,
+  [system.color.brand.surface.critical.strong]: brand.critical50,
+  [system.color.brand.surface.caution.default]: brand.caution25,
+  [system.color.brand.surface.caution.strong]: brand.caution50,
+  [system.color.brand.surface.positive.default]: brand.positive25,
+  [system.color.brand.surface.positive.strong]: brand.positive50,
+  [system.color.brand.surface.selected]: brand.primary50,
+});
+
 export const useCanvasThemeToCssVars = (
   /**
    * @deprecated ⚠️ `theme` is deprecated. In previous versions of Canvas Kit, we allowed teams to pass a theme object, this supported [Emotion's theming](https://emotion.sh/docs/theming). Now that we're shifting to a global theming approach based on CSS variables, we advise to no longer using the theme prop. For more information, view our [Theming Docs](https://workday.github.io/canvas-kit/?path=/docs/features-theming-overview--docs#-preferred-approach-v14).
@@ -224,7 +344,6 @@ export const useCanvasThemeToCssVars = (
           //@ts-ignore
           style[brand.common[key]] = value;
 
-          // Forward to new brand.common tokens
           //@ts-ignore
           style[commonTokenMapping[key]] = value;
 
