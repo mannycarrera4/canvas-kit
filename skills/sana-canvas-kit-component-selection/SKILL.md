@@ -1,11 +1,11 @@
 ---
-name: sana-canvas-component-selection
+name: sana-canvas-kit-component-selection
 description: >-
   Avoid deprecated Canvas Kit exports and props. Prefers Preview when Main is @deprecated, and Labs
   when Preview is @deprecated. Use when checking Main vs Preview vs Labs, verifying JSDoc
   @deprecated tags, or when the user mentions deprecated, preview, or labs. For which token to use
-  see /sana-canvas-tokens; for createStyles/cs see /sana-canvas-styling; for building new components
-  see /sana-canvas-builder.
+  see /sana-canvas-kit-tokens; for createStyles/cs see /sana-canvas-kit-styling; for building new components
+  see /sana-canvas-kit-builder.
 ---
 
 # Canvas Kit deprecation & package tiers
@@ -13,12 +13,12 @@ description: >-
 **Never introduce or recommend anything carrying `@deprecated`.** Verify in installed `node_modules`
 before choosing an export or prop.
 
-**REQUIRED SUB-SKILL:** `/sana-canvas-version`. Deprecation status is version-specific — run it
+**REQUIRED SUB-SKILL:** `/sana-canvas-kit-version`. Deprecation status is version-specific — run it
 first so you know which generation's rules apply before checking JSDoc.
 
-Which token → `/sana-canvas-tokens`. How to style (`cs`, stencils) → `/sana-canvas-styling`.
-Building a new component → `/sana-canvas-builder`. Choosing between components for a use case →
-`/sana-canvas-design-principles`.
+Which token → `/sana-canvas-kit-tokens`. How to style (`cs`, stencils) → `/sana-canvas-kit-styling`.
+Building a new component → `/sana-canvas-kit-builder`. Choosing between components for a use case →
+`/sana-canvas-kit-design-principles`.
 
 ## Package tiers
 
@@ -48,9 +48,9 @@ with tokens/`Flex`.
 3. **Follow the chain** — Main → Preview → Labs → removal.
 4. **Match nearby imports** — prefer the tier the file already uses when both are valid.
 5. **Style props on `Box`/`Flex` are deprecated** — use `cs` + `createStyles`/`createStencil`
-   (`/sana-canvas-styling`). Do not teach the migration here.
+   (`/sana-canvas-kit-styling`). Do not teach the migration here.
 6. **Legacy kit tokens are deprecated** — never `@workday/canvas-kit-react/tokens`; use
-   `@workday/canvas-tokens-web` (`/sana-canvas-tokens`).
+   `@workday/canvas-tokens-web` (`/sana-canvas-kit-tokens`).
 
 ## What can be deprecated
 
@@ -96,9 +96,9 @@ rg -B5 "@deprecated" node_modules/@workday/canvas-kit-react/<component>
 | ------------------------------------------------ | ------------------------------------------------ |
 | `Please use [X] in Preview`                      | Import from `@workday/canvas-kit-preview-react`  |
 | `Please use [X] in Labs`                         | Check Main first; else Labs (not installed here) |
-| `Use cs prop with createStencil or createStyles` | `/sana-canvas-styling`                           |
-| `Use @workday/canvas-tokens-web`                 | `/sana-canvas-tokens`                            |
-| `Use aria-disabled`                              | Replace `disabled` prop; see `/sana-canvas-a11y` |
+| `Use cs prop with createStencil or createStyles` | `/sana-canvas-kit-styling`                           |
+| `Use @workday/canvas-tokens-web`                 | `/sana-canvas-kit-tokens`                            |
+| `Use aria-disabled`                              | Replace `disabled` prop; see `/sana-canvas-kit-accessibility` |
 | `Use handleCsProp`                               | Replace `mergeStyles` when merging `cs`          |
 
 ### Validate
@@ -106,10 +106,10 @@ rg -B5 "@deprecated" node_modules/@workday/canvas-kit-react/<component>
 From the project root:
 
 ```bash
-node .claude/skills/sana-canvas-component-selection/scripts/check-deprecated-usage.mjs <file-or-dir>
+node skills/sana-canvas-kit-component-selection/scripts/check-deprecated-usage.mjs <file-or-dir>
 ```
 
-(Cursor copy: `.cursor/skills/sana-canvas-component-selection/scripts/…`.)
+(If skills are installed under `.cursor/skills/` or `.claude/skills/`, adjust the path prefix.)
 
 ## Red flags
 
@@ -124,7 +124,7 @@ Confirm each against installed JSDoc before acting:
 
 ## Additional resources
 
-- Hint tables: [reference.md](reference.md) (verify in `node_modules` first)
-- How to style after leaving style props: `/sana-canvas-styling`
-- Which token path to use: `/sana-canvas-tokens`
-- Accessibility (labels, keyboard, ARIA): `/sana-canvas-a11y`
+- Hint tables: [references.md](references.md) (verify in `node_modules` first)
+- How to style after leaving style props: `/sana-canvas-kit-styling`
+- Which token path to use: `/sana-canvas-kit-tokens`
+- Accessibility (labels, keyboard, ARIA): `/sana-canvas-kit-accessibility`

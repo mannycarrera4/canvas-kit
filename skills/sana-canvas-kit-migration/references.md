@@ -1,6 +1,7 @@
 # Canvas Kit Codemod Reference
 
-> Commands from `@workday/canvas-kit-codemod`. Run with `npx @workday/canvas-kit-codemod <transform> [path]`.
+> Commands from `@workday/canvas-kit-codemod`. Run with
+> `npx @workday/canvas-kit-codemod@16.0.6 <transform> [path]` (pin to the version you tested).
 
 ## General options
 
@@ -29,8 +30,8 @@ Run in order. Do not skip majors. There is no `v10` transform.
 | `v13`     | v12 → v13   | Expandable promote, dub logos              |
 | `v13.2`   | —           | React tokens → canvas-tokens-web v2        |
 | `v14`     | v13 → v14   | StatusIndicator preview, pill/expandable   |
-| `v14.1`   | v14.1       | Deprecated style props → `cs`              |
-| `v15`     | v14 → v15   | SidePanel promote, Switch preview, pill    |
+| `v14.1`   | v14 → v14.1 | Deprecated style props → `cs`                |
+| `v15`     | v14.1 → v15 | SidePanel promote, Switch preview, pill    |
 | `v16`     | v15 → v16   | Hyperlink props, card variant, side panel  |
 
 ## Sub-codemods (run when crossing their boundary)
@@ -66,12 +67,12 @@ other icon packages. For accent/applet/expressive, use `v15-icons` instead.
 ```sh
 # After bumping package.json to each target and yarn install:
 
-npx @workday/canvas-kit-codemod v15 src/
+npx @workday/canvas-kit-codemod@16.0.6 v15 src/
 # → review v15 upgrade guide, manual steps, commit
 
-npx @workday/canvas-kit-codemod v16 src/
+npx @workday/canvas-kit-codemod@16.0.6 v16 src/
 yarn add @workday/canvas-system-icons-web@^5
-npx @workday/canvas-kit-codemod icon-migration src/
+npx @workday/canvas-kit-codemod@16.0.6 icon-migration src/
 # → review v16 upgrade guide, commit
 ```
 
@@ -84,6 +85,6 @@ npx @workday/canvas-kit-codemod icon-migration src/
 
 ## Related skills
 
-- Leftover deprecations: `/sana-canvas-component-selection`
-- Leftover tokens: `/sana-canvas-tokens`
-- Style props after v14.1: `/sana-canvas-styling`
+- Leftover deprecations: `/sana-canvas-kit-component-selection`
+- Leftover tokens: `/sana-canvas-kit-tokens`
+- Style props after v14.1: `/sana-canvas-kit-styling`

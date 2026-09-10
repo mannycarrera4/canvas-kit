@@ -1,6 +1,6 @@
 # Canvas Kit Version / Upgrade Guide Matrix
 
-Reference for `/sana-canvas-version`. Verify against installed `node_modules`, not this table
+Reference for `/sana-canvas-kit-version`. Verify against installed `node_modules`, not this table
 alone — releases can ship out of band with this list.
 
 ## Package version pairing (approximate)

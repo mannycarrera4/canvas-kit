@@ -24,7 +24,17 @@ const docsMap = new Map<string, ExportedSymbol<Value>[]>();
 const config: StorybookConfig = {
   framework: '@storybook/react-vite',
   staticDirs: ['../public'],
-  stories: ['../modules/**/mdx/**/*.mdx', '../modules/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: [
+    // Source MDX only — exclude generated output under modules/docs/dist/mdx (no <Meta> tags).
+    '../modules/docs/mdx/**/*.mdx',
+    '../modules/styling/stories/mdx/**/*.mdx',
+    '../modules/react/common/stories/mdx/**/*.mdx',
+    '../modules/react/collection/stories/mdx/**/*.mdx',
+    '../modules/react/_examples/stories/mdx/**/*.mdx',
+    '../modules/preview-react/_examples/stories/mdx/**/*.mdx',
+    '../modules/mcp/stories/mdx/**/*.mdx',
+    '../modules/**/*.stories.@(js|jsx|ts|tsx)',
+  ],
   addons: [
     {
       name: '@storybook/addon-essentials',

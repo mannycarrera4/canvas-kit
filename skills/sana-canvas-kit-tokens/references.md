@@ -1,7 +1,7 @@
 # Canvas Token Reference
 
 > **Current generation only (`@workday/canvas-tokens-web` 4.4+).** Every table below assumes the
-> version reported by `/sana-canvas-version` is "current." If that skill reports an older install,
+> version reported by `/sana-canvas-kit-version` is "current." If that skill reports an older install,
 > these inventories and mapping tables are not authoritative — use MCP `get-canvas-kit-tokens` and
 > the matching upgrade guide instead. Even on current generation, JSDoc `@deprecated` on the
 > installed package always wins over these tables.
@@ -69,7 +69,7 @@ import {system} from '@workday/canvas-tokens-web';
 
 | Old type variant       | v4 Token                           |
 | ---------------------- | ---------------------------------- |
-| `type.variant.error`   | `system.color.fg.critical.default` |
+| `type.variant.error`   | `system.color.fg.danger.default` |
 | `type.variant.hint`    | `system.color.fg.muted.default`    |
 | `type.variant.inverse` | `system.color.fg.inverse`          |
 
@@ -144,7 +144,7 @@ import {system} from '@workday/canvas-tokens-web';
 
 `size0`=0 · `size25`=2 · `size50`=4 · `size75`=6 · `size100`=8 · `size150`=12 · `size200`=16 ·
 `size250`=20 · `size300`=24 · `size400`=32 · `size500`=40 · `size600`=48 · `size700`=56 ·
-`size800`=64
+`size800`=64 · `size900`=72 (4.5rem) · `size1000`=80 (5rem)
 
 ## How to verify in source
 

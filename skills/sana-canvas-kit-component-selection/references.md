@@ -13,7 +13,7 @@ node -p "require('./node_modules/@workday/canvas-kit-preview-react/package.json'
 Validation script (prints versions at start):
 
 ```bash
-node .claude/skills/sana-canvas-component-selection/scripts/check-deprecated-usage.mjs src/
+node skills/sana-canvas-kit-component-selection/scripts/check-deprecated-usage.mjs src/
 ```
 
 ## Component tier migrations (hints)
@@ -41,14 +41,14 @@ Always read the component’s `*Props` interface.
 
 ## Style props & styling APIs
 
-The entire Box style-prop system is deprecated. Do not migrate it here — use `/sana-canvas-styling`
+The entire Box style-prop system is deprecated. Do not migrate it here — use `/sana-canvas-kit-styling`
 (`cs` + `createStyles` / `createStencil`, `handleCsProp` instead of `mergeStyles` / `styled` /
 `boxStyleFn`).
 
 ## Tokens
 
 Never `@workday/canvas-kit-react/tokens`. Individual deprecated paths (`system.space.*`, etc.) →
-`/sana-canvas-tokens`.
+`/sana-canvas-kit-tokens`.
 
 ## How to verify in source
 
@@ -59,7 +59,7 @@ rg -B8 "export.*Switch" node_modules/@workday/canvas-kit-react/switch -n
 # Prop deprecation
 rg -B5 "@deprecated" node_modules/@workday/canvas-kit-react/menu
 
-# Deprecated style props (confirm, then style via /sana-canvas-styling)
+# Deprecated style props (confirm, then style via /sana-canvas-kit-styling)
 rg "@deprecated" node_modules/@workday/canvas-kit-react/layout/lib/utils/ -B1
 
 # Deprecated token paths

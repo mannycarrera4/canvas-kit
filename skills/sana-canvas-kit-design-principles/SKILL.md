@@ -1,12 +1,12 @@
 ---
-name: sana-canvas-design-principles
+name: sana-canvas-kit-design-principles
 description: >-
   Design-system usage guidance for Canvas Kit components -- when to use a component, when to use
   something else instead, and component-specific dos/don'ts. Use when choosing which component
   fits a use case (Button vs Hyperlink, Modal vs Dialog vs Toast, Select vs Radio vs Checkbox vs
   MultiSelect, Tabs vs Segmented Control, etc.), when deciding component composition/placement, or
-  when reviewing a UI for design-system consistency. Cross-reference /sana-canvas-tokens for color
-  pairing and /sana-canvas-a11y for ARIA/keyboard implementation.
+  when reviewing a UI for design-system consistency. Cross-reference /sana-canvas-kit-tokens for color
+  pairing and /sana-canvas-kit-accessibility for ARIA/keyboard implementation.
 ---
 
 # Canvas Design Principles
@@ -27,8 +27,8 @@ server on this skill's behalf; read only the bundled reference files.
   Table pairing)
 - A user asks "should I use X or Y here"
 
-Not for: token/color choices (`/sana-canvas-tokens`), ARIA/keyboard implementation details
-(`/sana-canvas-a11y`), which package tier a component ships in (`/sana-canvas-component-selection`),
+Not for: token/color choices (`/sana-canvas-kit-tokens`), ARIA/keyboard implementation details
+(`/sana-canvas-kit-accessibility`), which package tier a component ships in (`/sana-canvas-kit-component-selection`),
 or content/copy style (out of scope for this skill set).
 
 ## Always-on decision rules
@@ -51,8 +51,8 @@ a section on the same page. Don't use a Button styled as a link for navigation.
 | 2 states, binary yes/no           | `Switch`                              |
 | 0–7 options, select any number     | `Checkbox` group                      |
 | 2–7 options, select exactly one     | `Radio` group                          |
-| 7–15 options, select one            | `Select`                              |
-| 7–100 options, select multiple      | `MultiSelect`                         |
+| 8+ options, select one              | `Select`                              |
+| 8+ options, select multiple         | `MultiSelect`                         |
 | Large/unknown option count          | Prompt (search + folders)             |
 
 **Wrap every input in `FormField`.** Inputs on a form should be wrapped in `FormField` — it's how
@@ -88,8 +88,8 @@ Need to navigate to another page/site, inline in text?
 Binary yes/no toggle?             → Switch
 0-7 options, multi-select?        → Checkbox group
 2-7 options, single-select?       → Radio group
-7-15 options, single-select?      → Select
-7-100 options, multi-select?      → MultiSelect
+8+ options, single-select?        → Select
+8+ options, multi-select?         → MultiSelect
 Unknown/large option list?        → Prompt
 Confirm/alert without blocking?   → Dialog
 Confirm/alert, blocking?          → Modal
@@ -114,9 +114,9 @@ Need a component and not sure?    → Check references/components.md for that co
       references/components.md (Usage Guidance / When to Use / When to Use Something Else /
       Do's and Don'ts)
 - [ ] Cross-check color-only signals and icon-only labels against the always-on rules
-- [ ] For color pairing once the component is chosen: /sana-canvas-tokens
-- [ ] For ARIA/keyboard implementation once the component is chosen: /sana-canvas-a11y
-- [ ] For Preview/Labs/Main package questions: /sana-canvas-component-selection
+- [ ] For color pairing once the component is chosen: /sana-canvas-kit-tokens
+- [ ] For ARIA/keyboard implementation once the component is chosen: /sana-canvas-kit-accessibility
+- [ ] For Preview/Labs/Main package questions: /sana-canvas-kit-component-selection
 ```
 
 ## Anti-patterns
@@ -148,6 +148,6 @@ Use Something Else, Do's and Don'ts, and per-component accessibility guidance (f
 
 - Per-component usage, when-to-use, and dos/don'ts (34 components): [references/components.md](references/components.md)
 - Cross-cutting accessibility guidelines (color, forms, alt-text, input devices): [references/accessibility.md](references/accessibility.md)
-- Color pairing / tokens: `/sana-canvas-tokens`
-- ARIA / keyboard / focus implementation: `/sana-canvas-a11y`
-- Package tier (Main/Preview/Labs) questions: `/sana-canvas-component-selection`
+- Color pairing / tokens: `/sana-canvas-kit-tokens`
+- ARIA / keyboard / focus implementation: `/sana-canvas-kit-accessibility`
+- Package tier (Main/Preview/Labs) questions: `/sana-canvas-kit-component-selection`

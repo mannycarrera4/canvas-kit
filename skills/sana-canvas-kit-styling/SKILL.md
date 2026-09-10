@@ -1,5 +1,5 @@
 ---
-name: sana-canvas-styling
+name: sana-canvas-kit-styling
 description: >-
   Style React components with Canvas Kit. Use when writing createStyles or createStencil, applying
   the cs prop, building reusable components with handleCsProp, migrating away from deprecated style
@@ -10,11 +10,11 @@ description: >-
 # Canvas Kit Styling
 
 **How** to apply styles. For **which token** to use (color, spacing, size, shape, type), see
-`/sana-canvas-tokens` — this skill deliberately does not duplicate the token tables.
+`/sana-canvas-kit-tokens` — this skill deliberately does not duplicate the token tables.
 
-**REQUIRED SUB-SKILL:** `/sana-canvas-version`. Run it first — `createStyles`/`createStencil` and
+**REQUIRED SUB-SKILL:** `/sana-canvas-kit-version`. Run it first — `createStyles`/`createStencil` and
 the `cs` prop assume current-generation Canvas Kit (16.x). On an older install, style props or
-early `createStyles` patterns may still be load-bearing; see `/sana-canvas-migration` before
+early `createStyles` patterns may still be load-bearing; see `/sana-canvas-kit-migration` before
 applying this skill's rules wholesale.
 
 ## When to apply
@@ -37,7 +37,7 @@ Per-component styling examples: canvas-kit-mcp `docs://examples/{slug}`.
    `VStack` were removed in v9. `Box`/`Flex`/`Grid` are not formally deprecated, but don't reach for
    them as layout primitives — use a plain semantic element (`form`, `section`, `div`) with
    `className={createStyles(...)}`, or a Canvas Kit component with `cs`. When building a reusable
-   wrapper, use `createComponent` + a stencil (see `/sana-canvas-builder`).
+   wrapper, use `createComponent` + a stencil (see `/sana-canvas-kit-builder`).
 3. **Define styles at module level.** Never call `createStyles`/`createStencil` inside a render
    function.
 4. **Apply styles on the right surface:**
@@ -47,7 +47,7 @@ Per-component styling examples: canvas-kit-mcp `docs://examples/{slug}`.
    parts, CSS variables. Not conditional `createStyles` or inline objects.
 6. **Merge with `handleCsProp`** in reusable components. Never `mergeStyles` (deprecated).
 7. **Use logical properties** so layouts flip correctly in RTL.
-8. **Never deprecated tokens** in greenfield UI — see `/sana-canvas-tokens`. When building from
+8. **Never deprecated tokens** in greenfield UI — see `/sana-canvas-kit-tokens`. When building from
    Figma, bound variables win (including `bg.default` / `bg.alt.default`); mark true deprecated
    bindings with `// figma-bound`.
 
@@ -251,6 +251,7 @@ When your component accepts `cs`, `className`, or `style` from consumers:
 
 ```tsx
 import {createStencil, handleCsProp, CSProps} from '@workday/canvas-kit-styling'
+import {system} from '@workday/canvas-tokens-web'
 
 const myStencil = createStencil({
   base: {padding: system.padding.md, gap: system.gap.sm},
@@ -395,7 +396,7 @@ calc.negate(system.gap.md); // negative margins
 If `createStyles`/`createStencil` output renders with missing colors, `undefined` values, or no
 visible effect, the usual cause is missing CSS variable imports at the app root, not a styling API
 mistake. Full checklist (four `_variables.css` imports, Sana theme order, template-literal `var()`
-wrapping) lives in `/sana-canvas-tokens` — check that before re-writing the style definition.
+wrapping) lives in `/sana-canvas-kit-tokens` — check that before re-writing the style definition.
 
 ## External documentation
 
@@ -422,7 +423,7 @@ wrapping) lives in `/sana-canvas-tokens` — check that before re-writing the st
 - ❌ Emotion `styled()` / `css` prop, Tailwind, or CSS modules on Canvas components
 - ❌ Physical directional properties — use logical ones
 - ❌ Margin on children to fake `gap` between siblings
-- ❌ Deprecated tokens in greenfield (see `/sana-canvas-tokens`); don’t remap Figma-bound `bg.*`
+- ❌ Deprecated tokens in greenfield (see `/sana-canvas-kit-tokens`); don’t remap Figma-bound `bg.*`
   survivors
 - ❌ `boxShadow` + `overflow: 'hidden'` on the same node
 - ❌ `flex: 1` without `minHeight: 0` / `minWidth: 0` on the shrink path
@@ -440,10 +441,10 @@ Props / variants / state?                  → createStencil modifiers (not cs a
 Multiple modifier combos?                  → compound modifiers
 Sub-element targeting?                     → stencil parts
 Customizing a Canvas Kit component?        → extend its stencil
-Building a reusable component?             → createComponent + handleCsProp (/sana-canvas-builder)
+Building a reusable component?             → createComponent + handleCsProp (/sana-canvas-kit-builder)
 Spacing between flex/grid children?        → gap on the parent (in createStyles)
 RTL-safe directional spacing?              → logical properties in createStyles
 Need shadow + clip?                        → separate wrapper vs overflow layer
-Which token?                               → /sana-canvas-tokens
+Which token?                               → /sana-canvas-kit-tokens
 Migrating legacy Flex/Box + style props?   → createStyles first; replace Flex/Box when you touch the file
 ```

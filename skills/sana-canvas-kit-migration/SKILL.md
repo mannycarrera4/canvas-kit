@@ -1,10 +1,10 @@
 ---
-name: sana-canvas-migration
+name: sana-canvas-kit-migration
 description: >-
   Upgrade Canvas Kit across major versions. Always run codemods before manual edits. Use when
   migrating v9+, running @workday/canvas-kit-codemod, following upgrade guides, or bumping
   canvas-tokens-web / canvas-system-icons-web. Hands off leftover deprecations to
-  /sana-canvas-component-selection and leftover tokens to /sana-canvas-tokens.
+  /sana-canvas-kit-component-selection and leftover tokens to /sana-canvas-kit-tokens.
 ---
 
 # Canvas Kit Migration
@@ -12,11 +12,11 @@ description: >-
 **Always run the codemod(s) before touching code by hand.** Codemods traverse the AST and apply
 prescribed transforms — manual edits first waste time and miss patterns.
 
-**REQUIRED SUB-SKILL:** `/sana-canvas-version`. Run it first to confirm the installed version and
+**REQUIRED SUB-SKILL:** `/sana-canvas-kit-version`. Run it first to confirm the installed version and
 which upgrade guide(s) apply — don't re-derive version detection or upgrade-guide lookup here.
 
-How to apply styles after migration → `/sana-canvas-styling`. Leftover deprecated exports/props →
-`/sana-canvas-component-selection`. Leftover token paths → `/sana-canvas-tokens`.
+How to apply styles after migration → `/sana-canvas-kit-styling`. Leftover deprecated exports/props →
+`/sana-canvas-kit-component-selection`. Leftover token paths → `/sana-canvas-kit-tokens`.
 
 ## When to apply
 
@@ -44,19 +44,19 @@ MCP `get-canvas-kit-upgrade-guides` or read `modules/docs/mdx/<version>-UPGRADE-
 - [ ] Record installed versions (canvas-kit-react, canvas-tokens-web, canvas-system-icons-web)
 - [ ] Bump package.json dependencies to the target version (one major at a time)
 - [ ] yarn install
-- [ ] Run npx @workday/canvas-kit-codemod v<N> [path] for each major in the chain
+- [ ] Run npx @workday/canvas-kit-codemod@16.0.6 v<N> [path] for each major in the chain
 - [ ] Run sub-codemods where applicable (see below)
 - [ ] Commit codemod output alone; run linter/formatter
 - [ ] Open that version's upgrade guide — manual checklist for items NOT marked 🤖
-- [ ] /sana-canvas-component-selection for leftover @deprecated exports/props
-- [ ] /sana-canvas-tokens for leftover token paths
+- [ ] /sana-canvas-kit-component-selection for leftover @deprecated exports/props
+- [ ] /sana-canvas-kit-tokens for leftover token paths
 - [ ] yarn typecheck && yarn test
 - [ ] Repeat for next major until target reached
 ```
 
 ### Check installed versions
 
-See `/sana-canvas-version` for the full detection workflow and version matrix. Quick check:
+See `/sana-canvas-kit-version` for the full detection workflow and version matrix. Quick check:
 
 ```bash
 node -p "require('@workday/canvas-kit-react/package.json').version"
@@ -67,7 +67,7 @@ node -p "require('@workday/canvas-system-icons-web/package.json').version"
 ### Run a version codemod
 
 ```sh
-npx @workday/canvas-kit-codemod v16 src/
+npx @workday/canvas-kit-codemod@16.0.6 v16 src/
 ```
 
 Scope `[path]` to directories that need updating (`src/`, specific monorepo packages). Smaller scope
@@ -76,15 +76,15 @@ Scope `[path]` to directories that need updating (`src/`, specific monorepo pack
 Alternative (temporary install):
 
 ```sh
-yarn add @workday/canvas-kit-codemod --dev
+yarn add @workday/canvas-kit-codemod@16.0.6 --dev
 yarn canvas-kit-codemod v16 src/
 yarn remove @workday/canvas-kit-codemod
 ```
 
 ### Version chain
 
-Run each transform in order from your **installed** major to **target** major. There is no v10
-codemod — the sequence jumps v9 → v11.
+Run each transform in order from your **installed** major to **target** major. The `v11` codemod
+expects v10 source input, but there is no `v10` transform — the sequence jumps v9 → v11.
 
 `v5` → `v6` → `v7` → `v8` → `v9` → `v11` → `v12` → `v13` → `v13.2` → `v14` → `v14.1` → `v15` → `v16`
 
@@ -103,14 +103,14 @@ Run these when crossing the boundary they cover, **after** upgrading the depende
 
 ```sh
 # Token migration (v13 → v14 token system)
-npx @workday/canvas-kit-codemod v14-tokens src/
+npx @workday/canvas-kit-codemod@16.0.6 v14-tokens src/
 
 # System icons (v5 Sana + v4 naming cleanup in one pass)
 yarn add @workday/canvas-system-icons-web@^5
-npx @workday/canvas-kit-codemod icon-migration src/
+npx @workday/canvas-kit-codemod@16.0.6 icon-migration src/
 
 # Accent/applet/expressive icons (v15)
-npx @workday/canvas-kit-codemod v15-icons src/
+npx @workday/canvas-kit-codemod@16.0.6 v15-icons src/
 ```
 
 For v16 specifically, the `v16` codemod handles hyperlink props, card variant, and side panel variant.
@@ -120,8 +120,8 @@ Run `icon-migration` separately after upgrading system icons to v5.
 
 1. Review the full diff — codemods can miss dynamic patterns, string templates, and non-code files.
 2. Open the matching upgrade guide. Items marked 🤖 were automated; everything else is your checklist.
-3. Run leftover deprecation cleanup → `/sana-canvas-component-selection`.
-4. Run leftover token cleanup → `/sana-canvas-tokens`.
+3. Run leftover deprecation cleanup → `/sana-canvas-kit-component-selection`.
+4. Run leftover token cleanup → `/sana-canvas-kit-tokens`.
 5. `yarn lint` (formatting from codemods may not match project style).
 6. `yarn typecheck` and `yarn test`.
 
@@ -141,8 +141,8 @@ Canvas Kit v16 also requires separate packages:
 ```sh
 yarn add @workday/canvas-tokens-web@4.4.0 @workday/canvas-system-icons-web@5.0.0
 yarn add @workday/canvas-kit-react@^16
-npx @workday/canvas-kit-codemod v16 src/
-npx @workday/canvas-kit-codemod icon-migration src/
+npx @workday/canvas-kit-codemod@16.0.6 v16 src/
+npx @workday/canvas-kit-codemod@16.0.6 icon-migration src/
 ```
 
 For Sana theme setup, fonts, and component visual changes, see the v16 upgrade guide. MCP:
@@ -162,12 +162,12 @@ For Sana theme setup, fonts, and component visual changes, see the v16 upgrade g
 ```
 Which major am I on?              → node -p require('.../package.json').version
 Upgrading one major?              → bump deps → codemod v<N> → upgrade guide checklist
-Crossing token system boundary?   → v14-tokens (then /sana-canvas-tokens for leftovers)
-Crossing style-props boundary?    → v14.1 (then /sana-canvas-styling)
+Crossing token system boundary?   → v14-tokens (then /sana-canvas-kit-tokens for leftovers)
+Crossing style-props boundary?    → v14.1 (then /sana-canvas-kit-styling)
 System icons deprecated?          → upgrade icons v5 → icon-migration
 Accent/applet/expressive icons?   → v15-icons
-Leftover @deprecated in code?     → /sana-canvas-component-selection
-Leftover old token paths?         → /sana-canvas-tokens
+Leftover @deprecated in code?     → /sana-canvas-kit-component-selection
+Leftover old token paths?         → /sana-canvas-kit-tokens
 ```
 
 ## Additional resources

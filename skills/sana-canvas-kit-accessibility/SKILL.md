@@ -1,10 +1,10 @@
 ---
-name: sana-canvas-a11y
+name: sana-canvas-kit-accessibility
 description: >-
   Build accessible UI with Canvas Kit. Use when adding ARIA, labels, keyboard support, focus
   management, popups/portals, live regions, forms accessibility, or reviewing a11y. Prefer semantic
-  HTML over hand-added ARIA. For custom component factories see /sana-canvas-builder; for deprecated
-  props like disabled vs aria-disabled see /sana-canvas-component-selection.
+  HTML over hand-added ARIA. For custom component factories see /sana-canvas-kit-builder; for deprecated
+  props like disabled vs aria-disabled see /sana-canvas-kit-component-selection.
 ---
 
 # Canvas Kit Accessibility
@@ -14,8 +14,8 @@ Accessibility is not a follow-up pass — implement it while you build, not only
 **Guiding principle:** [No ARIA is better than Bad ARIA](https://www.w3.org/WAI/ARIA/apg/practices/read-me-first/).
 Prefer semantic HTML and native keyboard behavior. Only add ARIA that a pattern actually requires.
 
-Building custom components → `/sana-canvas-builder`. Deprecated a11y-related props (`disabled` on
-`MenuItem`, etc.) → `/sana-canvas-component-selection`.
+Building custom components → `/sana-canvas-kit-builder`. Deprecated a11y-related props (`disabled` on
+`MenuItem`, etc.) → `/sana-canvas-kit-component-selection`.
 
 ## When to apply
 
@@ -102,7 +102,7 @@ Reach for Canvas Kit components that already implement APG behavior (`Menu`, `Mo
 Tab/Shift+Tab alone is **not** enough for composite widgets — check the APG for the pattern you're
 implementing.
 
-Deprecated: `disabled` on `MenuItem` — use `aria-disabled` (`/sana-canvas-component-selection`).
+Deprecated: `disabled` on `MenuItem` — use `aria-disabled` (`/sana-canvas-kit-component-selection`).
 
 ## Focus indicators
 
@@ -157,7 +157,7 @@ Patterns (detail in `modules/docs/mdx/accessibility/Popups.mdx`):
 Theme: portaled popups inherit CSS variables from `<html>`. Set `data-theme="sana-canvas"` on
 `<html>` or use `CanvasProvider` theme forwarding — see v16 upgrade guide.
 
-Before custom dismissal logic, read `Popups.mdx`, `InlinePortals.mdx`.
+Before custom dismissal logic, read `modules/docs/mdx/accessibility/Popups.mdx`.
 
 ## Forms
 
@@ -177,9 +177,9 @@ Use `FormField` compound API for labels, hints, and errors:
 - Don't rely on color alone for error/caution — use text and icons
 - Checked-state contrast: custom `brand.success` themes must maintain 3:1 against white checkmarks
   (v16 Checkbox/Radio/Switch)
-- **Which color pair to use** for error/warning/success text and surfaces → `/sana-canvas-tokens`
+- **Which color pair to use** for error/warning/success text and surfaces → `/sana-canvas-kit-tokens`
   (accessible color pairings section). This skill covers *that* color can't be the only signal;
-  `/sana-canvas-tokens` covers *which* token pair guarantees contrast.
+  `/sana-canvas-kit-tokens` covers *which* token pair guarantees contrast.
 
 MCP: `get-accessibility-guidelines` with `{"scenario": "forms"}` or `{"component": "form-field"}`.
 
@@ -208,7 +208,7 @@ Read `modules/docs/mdx/accessibility/AriaLiveRegions.mdx` before inventing annou
 ## Tables
 
 - Use `Table` / `BaseTable` with proper header cells (`scope` where needed)
-- For filterable/sortable tables, see `TablesAdvanced.mdx` and `TestingTableWithFormFields.mdx`
+- For filterable/sortable/expandable tables, see `modules/docs/mdx/accessibility/tables/`
 - Name tables via `<caption>`, `aria-label`, or `aria-labelledby` (e.g. heading + `useUniqueId`)
 
 MCP: `{"scenario": "tables"}` or `{"component": "table"}`.
@@ -282,12 +282,12 @@ Need a label?                    → visible <label> / FormField.Label > aria-la
 Building a popup?                → Modal (trap) vs Dialog vs Popup vs Menu — see table above
 Selectable menu items?           → Menu.Option + aria-selected (not Menu.Item alone)
 Status after filter/search?      → AriaLiveRegion (polite, debounced)
-Custom expand/collapse?          → Expandable / Disclosure patterns (/sana-canvas-builder)
+Custom expand/collapse?          → Expandable / Disclosure patterns (/sana-canvas-kit-builder)
 Extending focus styles?          → `:focus-visible` (+ `&.focus` for static states)
 Which component a11y rules?      → MCP get-accessibility-guidelines + docs://examples/{slug}/accessibility
-Deprecated a11y props?           → /sana-canvas-component-selection
-Which color pairing is accessible? → /sana-canvas-tokens (color-contrast section)
-Choosing between two components? → /sana-canvas-design-principles
+Deprecated a11y props?           → /sana-canvas-kit-component-selection
+Which color pairing is accessible? → /sana-canvas-kit-tokens (color-contrast section)
+Choosing between two components? → /sana-canvas-kit-design-principles
 ```
 
 ## Additional resources
@@ -296,3 +296,7 @@ Choosing between two components? → /sana-canvas-design-principles
 - Scenario index: [references.md](references.md)
 - MCP install: `modules/mcp/stories/mdx/MCPDocs.mdx`
 - Cypress: mount Storybook examples + `cy.checkA11y()` per repo testing guidelines
+- React Testing Library accessibility queries:
+  [DOM Testing Library — Accessibility](https://testing-library.com/docs/dom-testing-library/api-accessibility/)
+- Unit-test axe integration: [jest-axe](https://github.com/nickcolley/jest-axe),
+  [vitest-axe](https://github.com/chaance/vitest-axe)

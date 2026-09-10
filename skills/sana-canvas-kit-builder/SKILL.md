@@ -1,11 +1,11 @@
 ---
-name: sana-canvas-builder
+name: sana-canvas-kit-builder
 description: >-
   Build custom React components with Canvas Kit factories from @workday/canvas-kit-react/common.
   Use when creating createComponent, createContainer, createSubcomponent, createModelHook, or
   createElemPropsHook; designing compound component APIs; or adding shared state/behavior. For styling
-  see /sana-canvas-styling; for tokens see /sana-canvas-tokens; for accessibility see
-  /sana-canvas-a11y; for avoiding deprecated exports see /sana-canvas-component-selection.
+  see /sana-canvas-kit-styling; for tokens see /sana-canvas-kit-tokens; for accessibility see
+  /sana-canvas-kit-accessibility; for avoiding deprecated exports see /sana-canvas-kit-component-selection.
 ---
 
 # Canvas Kit Component Builder
@@ -14,11 +14,11 @@ Build **custom components in consumer apps** using Canvas Kit's exported factori
 the factory pattern — not contributing a component into the canvas-kit repo itself (that workflow uses
 `yarn create-component`, Storybook, Cypress, and stricter repo requirements).
 
-Styling → `/sana-canvas-styling`. Tokens → `/sana-canvas-tokens`. Accessibility →
-`/sana-canvas-a11y`. Deprecated exports when composing existing components →
-`/sana-canvas-component-selection`. Version detection (which factory APIs are available) →
-`/sana-canvas-version`. Deciding whether a Canvas component already covers the use case before
-building your own → `/sana-canvas-design-principles`.
+Styling → `/sana-canvas-kit-styling`. Tokens → `/sana-canvas-kit-tokens`. Accessibility →
+`/sana-canvas-kit-accessibility`. Deprecated exports when composing existing components →
+`/sana-canvas-kit-component-selection`. Version detection (which factory APIs are available) →
+`/sana-canvas-kit-version`. Deciding whether a Canvas component already covers the use case before
+building your own → `/sana-canvas-kit-design-principles`.
 
 ## When to apply
 
@@ -51,17 +51,18 @@ building your own → `/sana-canvas-design-principles`.
 ```tsx
 // useDisclosureModel.ts
 import * as React from 'react';
-import {createModelHook} from '@workday/canvas-kit-react/common';
+import {createModelHook, useUniqueId} from '@workday/canvas-kit-react/common';
 
 export const useDisclosureModel = createModelHook({
   defaultConfig: {
     initialVisible: false,
   },
 })(config => {
+  const id = useUniqueId(config.id);
   const [visible, setVisible] = React.useState(config.initialVisible);
 
   return {
-    state: {visible},
+    state: {id, visible},
     events: {
       show() {
         setVisible(true);
@@ -108,6 +109,9 @@ import {useDisclosureModel} from './useDisclosureModel';
 
 export const useDisclosureTarget = composeHooks(
   createElemPropsHook(useDisclosureModel)(model => ({
+    type: 'button',
+    'aria-expanded': model.state.visible,
+    'aria-controls': model.state.id,
     onClick() {
       if (model.state.visible) {
         model.events.hide();
@@ -135,7 +139,7 @@ export const DisclosureTarget = createSubcomponent('button')({
 
 ```tsx
 import {createComponent} from '@workday/canvas-kit-react/common';
-import {createStyles} from '@workday/canvas-kit-styling';
+import {createStyles, handleCsProp} from '@workday/canvas-kit-styling';
 import {system} from '@workday/canvas-tokens-web';
 
 const headingStyles = createStyles({
@@ -146,7 +150,7 @@ const headingStyles = createStyles({
 export const CardHeading = createComponent('h3')({
   displayName: 'Card.Heading',
   Component: ({children, ...elemProps}, ref, Element) => (
-    <Element {...elemProps} ref={ref} cs={headingStyles}>
+    <Element ref={ref} {...handleCsProp(elemProps, headingStyles)}>
       {children}
     </Element>
   ),
@@ -159,7 +163,7 @@ export const CardHeading = createComponent('h3')({
    scope.
 2. **Merge props correctly** — primitives override; callbacks/`style`/`className`/`cs` merge. Use
    `mergeProps` for hand-rolled props; `handleCsProp` for `cs` in reusable styled components
-   (`/sana-canvas-styling`).
+   (`/sana-canvas-kit-styling`).
 3. **Don't declare `children`, `model`, `ref`, or `as` on Props** — factories add them.
 4. **No default exports** in library modules.
 5. **No TS `enum`** — use disjoint string unions (`size: 'small' | 'medium' | 'large'`).
@@ -169,7 +173,7 @@ export const CardHeading = createComponent('h3')({
 9. **Import from public subpaths** — `@workday/canvas-kit-react/<component>`, never the package barrel
    or `/lib/`.
 10. **Define styles at module level** — `createStyles`/`createStencil` + `cs`, not style props
-    (`/sana-canvas-styling`).
+    (`/sana-canvas-kit-styling`).
 
 ## Model composition
 
@@ -199,7 +203,7 @@ export const useDisclosureModel = createModelHook({
 
 Wire a11y in `createElemPropsHook` (e.g. `aria-expanded`, `aria-controls`, `id` from
 `useIDModel`). Full patterns — naming, keyboard, popups, forms, live regions, MCP lookup →
-`/sana-canvas-a11y`.
+`/sana-canvas-kit-accessibility`.
 
 ## Workflow
 
@@ -207,10 +211,10 @@ Wire a11y in `createElemPropsHook` (e.g. `aria-expanded`, `aria-controls`, `id` 
 - [ ] Pick factory (createComponent vs createContainer + model)
 - [ ] Define model with createModelHook if behavior is shared
 - [ ] Extract elemProps into createElemPropsHook (module scope)
-- [ ] Style with createStyles/createStencil + cs (/sana-canvas-styling)
-- [ ] Use system tokens (/sana-canvas-tokens)
-- [ ] Verify composed Canvas Kit imports are not @deprecated (/sana-canvas-component-selection)
-- [ ] JSDoc every prop; run a11y checklist (/sana-canvas-a11y)
+- [ ] Style with createStyles/createStencil + cs (/sana-canvas-kit-styling)
+- [ ] Use system tokens (/sana-canvas-kit-tokens)
+- [ ] Verify composed Canvas Kit imports are not @deprecated (/sana-canvas-kit-component-selection)
+- [ ] JSDoc every prop; run a11y checklist (/sana-canvas-kit-accessibility)
 ```
 
 ## App-level wrappers
@@ -249,11 +253,11 @@ Child reads model from context?          → createSubcomponent
 Reusable ARIA/event props for an element?→ createElemPropsHook
 Combining multiple elemProps hooks?      → composeHooks (module scope)
 Need id refs for a11y?                   → compose useIDModel into your model
-How to style?                            → /sana-canvas-styling
-Which token?                             → /sana-canvas-tokens
-Composing existing Canvas components?    → /sana-canvas-component-selection
-Accessibility (labels, keyboard, ARIA)? → /sana-canvas-a11y
-Does a Canvas component already do this?→ /sana-canvas-design-principles (check before building)
+How to style?                            → /sana-canvas-kit-styling
+Which token?                             → /sana-canvas-kit-tokens
+Composing existing Canvas components?    → /sana-canvas-kit-component-selection
+Accessibility (labels, keyboard, ARIA)? → /sana-canvas-kit-accessibility
+Does a Canvas component already do this?→ /sana-canvas-kit-design-principles (check before building)
 ```
 
 ## Additional resources

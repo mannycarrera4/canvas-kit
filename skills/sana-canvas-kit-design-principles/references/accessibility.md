@@ -7,7 +7,7 @@
 > cross-cutting guidelines.
 >
 > This is guidance only -- not automated validation or a WCAG compliance certification. For
-> implementation-level ARIA/keyboard/focus patterns, see `/sana-canvas-a11y`.
+> implementation-level ARIA/keyboard/focus patterns, see `/sana-canvas-kit-accessibility`.
 
 ## Introduction to Accessibility
 
@@ -117,8 +117,9 @@ lower-contrast ratio.
 Ensuring that contrast ratios are properly met will allow all users to read and understand content.
 These W3C guidelines apply to contrast ratios:
 
-- Text that is 14 pt or below must meet a 4.5:1 contrast ratio.
-- Text that is 14 pt and bold or larger than 18 pt must meet a 3:1 contrast ratio.
+- Regular text below 18 pt and bold text below 14 pt must meet a 4.5:1 contrast ratio.
+- Regular text at least 18 pt, or bold text at least 14 pt, may meet the reduced 3:1 contrast ratio
+  for large text.
 - Contrast ratios also apply to text, non-text content, and images of text.
 - Non-text content must meet a 3:1 contrast ratio.
 

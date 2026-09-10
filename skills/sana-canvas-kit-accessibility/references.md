@@ -47,16 +47,20 @@ Use the exact slug from the MCP tool enum (e.g. `buttons`, not `button`).
 
 | File | Use when |
 | ---- | -------- |
-| `accessibility/AccessibilityOverview.mdx` | Naming, accessibility tree, `useUniqueId`, `AccessibleHide` |
-| `accessibility/PageStructure.mdx` | Landmarks, heading hierarchy, reflow |
-| `accessibility/Popups.mdx` | Inline popups, `aria-owns`, initial/return focus |
-| `accessibility/InlinePortals.mdx` | Portal + reading order testing |
-| `accessibility/AriaLiveRegions.mdx` | `AriaLiveRegion` patterns, debouncing |
-| `accessibility/TablesAdvanced.mdx` | Complex table interactions |
-| `accessibility/TestingTableWithFormFields.mdx` | Tables containing form controls |
-| `accessibility/Headers.mdx` | Application header patterns |
-| `accessibility/SidePanel.mdx` | Side panel a11y |
-| `accessibility/WindowsHighContrastThemes.mdx` | WHCM testing |
+| `modules/docs/mdx/accessibility/AccessibilityOverview.mdx` | Naming, accessibility tree, `useUniqueId`, `AccessibleHide` |
+| `modules/docs/mdx/accessibility/PageStructure.mdx` | Landmarks, heading hierarchy, reflow |
+| `modules/docs/mdx/accessibility/Popups.mdx` | Inline popups, portaled popups, `aria-owns`, initial/return focus |
+| `modules/docs/mdx/accessibility/AriaLiveRegions.mdx` | `AriaLiveRegion` patterns, debouncing |
+| `modules/docs/mdx/accessibility/tables/Overview.mdx` | Table accessibility patterns index |
+| `modules/docs/mdx/accessibility/tables/ExpandableRows.mdx` | Expandable table rows |
+| `modules/docs/mdx/accessibility/tables/FilterableColumnHeaders.mdx` | Filterable column headers |
+| `modules/docs/mdx/accessibility/tables/NestedRows.mdx` | Nested table rows |
+| `modules/docs/mdx/accessibility/tables/SelectableRows.mdx` | Row selection |
+| `modules/docs/mdx/accessibility/tables/SortableColumnHeaders.mdx` | Sortable columns |
+| `modules/docs/mdx/accessibility/tables/WithFormFields.mdx` | Tables containing form controls |
+| `modules/docs/mdx/accessibility/Headers.mdx` | Application header patterns |
+| `modules/docs/mdx/accessibility/SidePanel.mdx` | Side panel a11y |
+| `modules/docs/mdx/accessibility/WindowsHighContrastThemes.mdx` | WHCM testing |
 
 ## Popup component selection
 
@@ -99,6 +103,6 @@ Use the exact slug from the MCP tool enum (e.g. `buttons`, not `button`).
 
 ## Related skills
 
-- Custom components / elemProps hooks: `/sana-canvas-builder`
-- `aria-disabled` vs `disabled`, Preview tiers: `/sana-canvas-component-selection`
-- Focus ring styling in stencils: `/sana-canvas-styling`
+- Custom components / elemProps hooks: `/sana-canvas-kit-builder`
+- `aria-disabled` vs `disabled`, Preview tiers: `/sana-canvas-kit-component-selection`
+- Focus ring styling in stencils: `/sana-canvas-kit-styling`

@@ -1,19 +1,19 @@
 ---
-name: sana-canvas-tokens
+name: sana-canvas-kit-tokens
 description: >-
   Choose Canvas design tokens from @workday/canvas-tokens-web. Use when picking system.color,
   system.gap, system.padding, system.size, system.shape, or system.type paths; choosing accessible
   color pairings; migrating deprecated token names (bg.*, text.*, space.*); or deciding base vs
-  system vs brand. For how to apply tokens in CSS see /sana-canvas-styling; for deprecated
-  components/props see /sana-canvas-component-selection.
+  system vs brand. For how to apply tokens in CSS see /sana-canvas-kit-styling; for deprecated
+  components/props see /sana-canvas-kit-component-selection.
 ---
 
 # Canvas Kit Tokens
 
 **Which** token to use, by role — not a single version's path list. For **how** to apply tokens
-(`createStyles`, `createStencil`, `cs`), see `/sana-canvas-styling`.
+(`createStyles`, `createStencil`, `cs`), see `/sana-canvas-kit-styling`.
 
-**REQUIRED SUB-SKILL:** `/sana-canvas-version`. Run it first. This skill's path tables and family
+**REQUIRED SUB-SKILL:** `/sana-canvas-kit-version`. Run it first. This skill's path tables and family
 names assume **current generation** (`@workday/canvas-kit-react` 16.x + `@workday/canvas-tokens-web`
 4.4+, Sana Canvas). If the version skill reports an older install, do **not** apply the tables
 below as current truth — use MCP `get-canvas-kit-tokens` plus the matching upgrade guide instead.
@@ -24,7 +24,7 @@ below as current truth — use MCP `get-canvas-kit-tokens` plus the matching upg
 - Pairing a background/foreground/border combination and needing it to stay accessible
 - Migrating `@workday/canvas-kit-react/tokens` or deprecated `system.*` paths
 - Translating Figma variables into token paths
-- Reviewing token usage after a codemod (`/sana-canvas-migration`)
+- Reviewing token usage after a codemod (`/sana-canvas-kit-migration`)
 
 For full inventories and old→new mapping tables (current-generation only), see
 [references.md](references.md). For deeper token docs, call MCP `get-canvas-kit-tokens` and start
@@ -32,7 +32,7 @@ with `docs://tokens/v4/v4.4-token-reference`.
 
 ## Core rules
 
-1. **Run `/sana-canvas-version` first** — these tables are current-generation only.
+1. **Run `/sana-canvas-kit-version` first** — these tables are current-generation only.
 2. **Default to `system.*`** — semantic, themeable tokens for almost everything.
 3. **Match the CSS property to the spacing family** — wrong family is a semantic error even when
    the pixel value matches.
@@ -136,18 +136,17 @@ UI (icons, control borders, focus rings).
 | ---------------------------------------- | -------------------------------------- | --------------------------------------------------- |
 | `surface.default`, `surface.alt.default`   | `fg.default`, `fg.muted.default`, `fg.strong`/`stronger` | The default pairing for body content            |
 | `surface.info\|danger\|warning\|success.default` | matching `fg.info\|danger\|warning\|success.default` | Status surfaces pair with status foregrounds     |
-| `brand.accent.primary` (and other solid accents) | `fg.inverse`                          | Default on solid brand/accent fills               |
-| `accent.warning`, `accent.caution`          | `fg.contrast` — **not** `fg.inverse`   | Warning/caution accents are light; inverse fails contrast |
+| `brand.accent.primary` (and other solid brand accents) | `fg.inverse`                    | Default on solid brand/accent fills               |
+| `brand.accent.caution` (and other light brand accents) | `fg.contrast` — **not** `fg.inverse` | Light accents fail with inverse foreground      |
 | `surface.contrast.default`                  | `fg.inverse`                           | Dark/contrast surfaces                            |
 
 ### Rules
 
 - **Match `fg` intensity to its surface/background modifier.** `bg.default`/`surface.default` use
-  `fg.default`; `surface.primary` uses `fg.primary`; `surface.primary.strong` uses
-  `fg.primary.strong`. Don't mix a `default` surface with a `strong` foreground meant for a
-  different surface.
-- **`fg.inverse` is for solid accent/brand fills** — except `accent.warning` and `accent.caution`,
-  which use `fg.contrast` instead (those accents are light, not dark).
+  `fg.default`; `brand.surface.primary.*` uses `brand.fg.primary.*`. Don't mix a `default` surface
+  with a `strong` foreground meant for a different surface.
+- **`fg.inverse` is for solid accent/brand fills** — except light brand accents such as
+  `brand.accent.caution`, which use `fg.contrast` instead.
 - **Don't put accent fills on alt surfaces** — never `accent.*` on `surface.alt`/`bg.alt`, even if
   a contrast calculator says it passes. This is a design-system rule, not just a math check.
 - **Don't mix overlay families** — `surface.overlay.*` is for neutral surfaces; `accent.overlay.*`
@@ -155,7 +154,7 @@ UI (icons, control borders, focus rings).
 - **Don't stack translucent `surface.*` fills** — many `surface.*` tokens use alpha values; nesting
   them compounds the wash and can silently drop contrast below the guaranteed ratio.
 - **Never use color alone** to convey state (error, required, success). Pair with an icon and text,
-  not color alone — see `/sana-canvas-a11y` for the full accessible-names guidance.
+  not color alone — see `/sana-canvas-kit-accessibility` for the full accessible-names guidance.
 
 ### Escape hatch: composing from `base` when no semantic pair fits
 
@@ -175,7 +174,7 @@ or estimate a contrast ratio from a hex value — use the step framework or a ca
 a `system.*` semantic pair whenever one exists.
 
 MCP: `get-canvas-kit-tokens` → `docs://tokens/color-contrast`. Full WCAG scenario guidance (forms,
-focus indicators, status messaging) lives in `/sana-canvas-a11y` — this skill only covers *which
+focus indicators, status messaging) lives in `/sana-canvas-kit-accessibility` — this skill only covers *which
 tokens* to pair.
 
 ## Spacing — three families
@@ -291,12 +290,12 @@ Do not compose `system.size` with `base.size` via `calc.add`.
 ## Workflow
 
 ```
-- [ ] Run /sana-canvas-version — confirm current generation before trusting these tables
+- [ ] Run /sana-canvas-kit-version — confirm current generation before trusting these tables
 - [ ] Identify CSS property → pick spacing/color/shape family
 - [ ] Prefer system.* over base.*
 - [ ] Picking a color pair? Use a semantic pair from the table above, not a free combination
 - [ ] Confirm path is NOT @deprecated in node_modules
-- [ ] Apply via createStyles/createStencil (/sana-canvas-styling)
+- [ ] Apply via createStyles/createStencil (/sana-canvas-kit-styling)
 - [ ] Run verification rg commands below on changed files
 ```
 
@@ -342,15 +341,15 @@ Type preset?                      → ...system.type.{level}.{size}
 Choosing a color pairing?         → semantic pair table above, not free composition
 No system token fits?             → base.size* or px2rem
 No semantic color pair fits?      → base step-difference framework, not a guess
-How to apply in components?       → /sana-canvas-styling
-Not on current generation?        → /sana-canvas-migration (run version skill first)
+How to apply in components?       → /sana-canvas-kit-styling
+Not on current generation?        → /sana-canvas-kit-migration (run version skill first)
 ```
 
 ## Additional resources
 
 - Full color inventory and mapping tables (current generation): [references.md](references.md)
-- How to apply styles: `/sana-canvas-styling`
-- Version detection: `/sana-canvas-version`
-- Codemod for token migration: `/sana-canvas-migration`
-- Component usage/dos-donts (choosing *which* component before styling it): `/sana-canvas-design-principles`
+- How to apply styles: `/sana-canvas-kit-styling`
+- Version detection: `/sana-canvas-kit-version`
+- Codemod for token migration: `/sana-canvas-kit-migration`
+- Component usage/dos-donts (choosing *which* component before styling it): `/sana-canvas-kit-design-principles`
 - MCP: `get-canvas-kit-tokens` → `docs://tokens/v4/v4.4-token-reference`, `docs://tokens/color-contrast`
