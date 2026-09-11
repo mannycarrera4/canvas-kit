@@ -39,8 +39,9 @@ Do not import icons from `@workday/canvas-kit-react` itself.
 
 1. **Use `size`, not `width`/`height`.** `Svg` and icon components accept a `size` prop tied to
    design tokens — legacy `width`/`height` on `Svg` are deprecated.
-2. **Pair icon-only controls with an accessible name.** Icon-only buttons need `aria-label`,
-   `aria-labelledby`, or a `Tooltip` — see `/sana-canvas-kit-accessibility`.
+2. **Pair icon-only controls with an accessible name.** Icon-only buttons need `aria-label`
+   or `aria-labelledby`. Add a `Tooltip` only as supplementary help — see
+   `/sana-canvas-kit-accessibility`.
 3. **Verify deprecations in `node_modules`.** `@deprecated` JSDoc on the installed export wins over
    static tables.
 4. **Run codemods before hand-editing icon imports.** `icon-migration` reads
@@ -81,7 +82,7 @@ Use this for `AccentIcon` / `AppletIcon` → `ExpressiveIcon` and related v15 ic
 
 ## Workflow
 
-```
+```text
 - [ ] /sana-canvas-kit-version — confirm icons package generation
 - [ ] Pick SystemIcon vs ExpressiveIcon
 - [ ] Import the asset from the icon package; pass via icon={...}

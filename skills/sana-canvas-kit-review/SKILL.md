@@ -84,10 +84,10 @@ Run each against the changed-file list (`rg -n '<pattern>' -- <files>`):
 | `system\.color\.bg\.(?!default\|alt\.default)` | usage | Deprecated `bg.*` paths (`bg.default` and `bg.alt.default` are OK) | `/sana-canvas-kit-tokens` |
 | `system\.legacy\.` | usage | Internal namespace, not for app code | `/sana-canvas-kit-tokens` |
 | `system\.sana\.` | usage | Internal Sana theme namespace | `/sana-canvas-kit-tokens` |
-| `createStyles\(|createStencil\(` | inside a function body (not module scope) | Style/stencil defined at render time | `/sana-canvas-kit-styling` |
+| `createStyles\(` or `createStencil\(` | inside a function body (not module scope) | Style/stencil defined at render time | `/sana-canvas-kit-styling` |
 | `cs=\{\[` | JSX prop | `cs` array — ambiguous merge order | `/sana-canvas-kit-styling` |
 | `mergeStyles\(` | usage | Deprecated merge helper | `/sana-canvas-kit-styling` |
-| `data-whatinput|hideMouseFocus|mouseFocusBehavior` | usage | Removed focus-suppression pattern | `/sana-canvas-kit-accessibility` |
+| `data-whatinput` or `hideMouseFocus` or `mouseFocusBehavior` | usage | Removed focus-suppression pattern | `/sana-canvas-kit-accessibility` |
 | `placeholder=["{].*(?!aria-label)` on an input with no adjacent label | manual read | Placeholder as sole label | `/sana-canvas-kit-accessibility` |
 | `disabled\b` | on `MenuItem`/similar | Should be `aria-disabled` | `/sana-canvas-kit-component-selection` |
 | `@workday/canvas-kit-(preview\|labs)-react` | import | Confirm the export is actually `@deprecated` in Main first | `/sana-canvas-kit-component-selection` |
@@ -99,9 +99,11 @@ else
   FILES=$( { git diff --name-only -- '*.tsx' '*.ts' '*.jsx' '*.js'; git diff --cached --name-only -- '*.tsx' '*.ts' '*.jsx' '*.js'; } | sort -u)
 fi
 rg -n "canvas-kit-react/tokens|system\.legacy\.|system\.sana\.|system\.space\.|mergeStyles\(" -- $FILES
-rg -n "system\.color\.(text|icon)\.|system\.color\.bg\.(?!default|alt\.default)" -- $FILES
+rg -n "system\.color\.(text|icon)\." -- $FILES
+# `rg`'s default (non-PCRE2) engine doesn't support negative lookahead — filter in two steps instead
+rg -n "system\.color\.bg\." -- $FILES | rg -v "bg\.(default|alt\.default)"
 rg -n "<(Flex|Box|Grid|Stack|HStack|VStack)\b" -- $FILES
-rg -n "\b(padding|margin|gap|depth|backgroundColor)=["{]" -- $FILES
+rg -n '\b(padding|margin|gap|depth|backgroundColor)=["{]' -- $FILES
 rg -n "createStyles\(|createStencil\(" -- $FILES
 rg -n "cs=\{\[" -- $FILES
 rg -n "data-whatinput|hideMouseFocus|mouseFocusBehavior" -- $FILES

@@ -1731,8 +1731,11 @@ Tabs must support the following keyboard interactions:
 
 #### Alternative Tab Stop
 
-`tabpanel` can optionally be included in the focus order to improve discoverability for screen
-readers, and allow scrolling with the keyboard when the panel height is fixed.
+When a `tabpanel`'s content has no focusable element, or its first element is not focusable, add
+`tabindex="0"` to the `tabpanel` so it is included in the focus order — this improves
+discoverability for screen readers and allows scrolling with the keyboard when the panel height is
+fixed. If every panel in the set reliably starts with a focusable element, the `tabpanel` does not
+need this tab stop.
 
 #### Screen Reader Interaction
 

@@ -143,8 +143,8 @@ UI (icons, control borders, focus rings).
 ### Rules
 
 - **Match `fg` intensity to its surface/background modifier.** `bg.default`/`surface.default` use
-  `fg.default`; `brand.surface.primary.*` uses `brand.fg.primary.*`. Don't mix a `default` surface
-  with a `strong` foreground meant for a different surface.
+  `fg.default`, `fg.muted.default`, or the stronger foregrounds listed in the semantic-pair table;
+  `brand.surface.primary.*` uses `brand.fg.primary.*`. Don't use a foreground from another family.
 - **`fg.inverse` is for solid accent/brand fills** — except light brand accents such as
   `brand.accent.caution`, which use `fg.contrast` instead.
 - **Don't put accent fills on alt surfaces** — never `accent.*` on `surface.alt`/`bg.alt`, even if

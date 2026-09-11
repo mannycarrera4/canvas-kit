@@ -55,6 +55,7 @@ import {createModelHook, useUniqueId} from '@workday/canvas-kit-react/common';
 
 export const useDisclosureModel = createModelHook({
   defaultConfig: {
+    id: undefined as string | undefined,
     initialVisible: false,
   },
 })(config => {
@@ -207,7 +208,7 @@ Wire a11y in `createElemPropsHook` (e.g. `aria-expanded`, `aria-controls`, `id` 
 
 ## Workflow
 
-```
+```text
 - [ ] Pick factory (createComponent vs createContainer + model)
 - [ ] Define model with createModelHook if behavior is shared
 - [ ] Extract elemProps into createElemPropsHook (module scope)
